@@ -3,214 +3,504 @@ elektron_fn_to_midi = {
         "page_1": {
             "tune": {
                 "midi": {"cc_msb": "40", "nrpn_lsb": "1", "nrpn_msb": "73"},
-                "max_value": "127",
-                "min_value": "0",
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 60,
+                "min_value": -60,
+                "default_value": 0,
             },
             "stim": {
                 "midi": {"cc_msb": "41", "nrpn_lsb": "1", "nrpn_msb": "74"},
-                "max_value": "127",
-                "min_value": "0",
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "sdep": {
                 "midi": {"cc_msb": "42", "nrpn_lsb": "1", "nrpn_msb": "75"},
-                "max_value": "127",
-                "min_value": "0",
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "algo": {
                 "midi": {"cc_msb": "43", "nrpn_lsb": "1", "nrpn_msb": "76"},
-                "max_value": "127",
-                "min_value": "0",
+                "max_midi_value": 6,
+                "min_midi_value": 0,
+                "max_value": 7,
+                "min_value": 1,
+                "default_value": 1,
             },
             "OP.C": {
-                "midi": {"cc_msb": "44", "nrpn_lsb": "1", "nrpn_msb": "77"}
+                "midi": {"cc_msb": "44", "nrpn_lsb": "1", "nrpn_msb": "77"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "OP.AB": {
-                "midi": {"cc_msb": "45", "nrpn_lsb": "1", "nrpn_msb": "78"}
+                "midi": {"cc_msb": "45", "nrpn_lsb": "1", "nrpn_msb": "78"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "FDBK": {
-                "midi": {"cc_msb": "46", "nrpn_lsb": "1", "nrpn_msb": "79"}
+                "midi": {"cc_msb": "46", "nrpn_lsb": "1", "nrpn_msb": "79"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "FOLD": {
-                "midi": {"cc_msb": "47", "nrpn_lsb": "1", "nrpn_msb": "80"}
+                "midi": {"cc_msb": "47", "nrpn_lsb": "1", "nrpn_msb": "80"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             }
         },
         "page_2": {
+            "RATIO1": {
+                "midi": {"cc_msb": "48", "nrpn_lsb": "1", "nrpn_msb": "81"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 31.75,
+                "min_value": 0.001,
+                "default_value": 0.500,
+            },
             "DEC1": {
-                "midi": {"cc_msb": "48", "nrpn_lsb": "1", "nrpn_msb": "81"}
+                "midi": {"cc_msb": "49", "nrpn_lsb": "1", "nrpn_msb": "82"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "END1": {
-                "midi": {"cc_msb": "49", "nrpn_lsb": "1", "nrpn_msb": "82"}
-            },
-            "RATIO1": {
-                "midi": {"cc_msb": "50", "nrpn_lsb": "1", "nrpn_msb": "83"}
+                "midi": {"cc_msb": "50", "nrpn_lsb": "1", "nrpn_msb": "83"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "MOD1": {
-                "midi": {"cc_msb": "51", "nrpn_lsb": "1", "nrpn_msb": "84"}
-            },
-            "DEC2": {
-                "midi": {"cc_msb": "52", "nrpn_lsb": "1", "nrpn_msb": "85"}
-            },
-            "END2": {
-                "midi": {"cc_msb": "53", "nrpn_lsb": "1", "nrpn_msb": "86"}
+                "midi": {"cc_msb": "51", "nrpn_lsb": "1", "nrpn_msb": "84"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "RATIO2": {
-                "midi": {"cc_msb": "54", "nrpn_lsb": "1", "nrpn_msb": "87"}
+                "midi": {"cc_msb": "52", "nrpn_lsb": "1", "nrpn_msb": "85"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 31.75,
+                "min_value": 0.001,
+                "default_value": 0.500,
+            },
+            "DEC2": {
+                "midi": {"cc_msb": "53", "nrpn_lsb": "1", "nrpn_msb": "86"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
+            },
+            "END2": {
+                "midi": {"cc_msb": "54", "nrpn_lsb": "1", "nrpn_msb": "87"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "MOD2": {
-                "midi": {"cc_msb": "55", "nrpn_lsb": "1", "nrpn_msb": "88"}
+                "midi": {"cc_msb": "55", "nrpn_lsb": "1", "nrpn_msb": "88"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             }
         },
         "page_3": {
             "HOLD": {
-                "midi": {"cc_msb": "56", "nrpn_lsb": "1", "nrpn_msb": "89"}
+                "midi": {"cc_msb": "56", "nrpn_lsb": "1", "nrpn_msb": "89"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "DEC": {
-                "midi": {"cc_msb": "57", "nrpn_lsb": "1", "nrpn_msb": "90"}
+                "midi": {"cc_msb": "57", "nrpn_lsb": "1", "nrpn_msb": "90"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "PH.C": {
-                "midi": {"cc_msb": "58", "nrpn_lsb": "1", "nrpn_msb": "91"}
+                "midi": {"cc_msb": "58", "nrpn_lsb": "1", "nrpn_msb": "91"},
+                "max_midi_value": 91,
+                "min_midi_value": 0,
+                "max_value": 91,
+                "min_value": 0,
+                "default_value": 0,
             },
             "LEV": {
-                "midi": {"cc_msb": "59", "nrpn_lsb": "1", "nrpn_msb": "92"}
+                "midi": {"cc_msb": "59", "nrpn_lsb": "1", "nrpn_msb": "92"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "NRST": {
-                "midi": {"cc_msb": "60", "nrpn_lsb": "1", "nrpn_msb": "93"}
+                "midi": {"cc_msb": "62", "nrpn_lsb": "1", "nrpn_msb": "95"},
+                "max_midi_value": 1,
+                "min_midi_value": 0,
+                "max_value": 1,
+                "min_value": 0,
+                "default_value": 0,
             },
             "NRM": {
-                "midi": {"cc_msb": "61", "nrpn_lsb": "1", "nrpn_msb": "94"}
+                "midi": {"cc_msb": "63", "nrpn_lsb": "1", "nrpn_msb": "96"},
+                "max_midi_value": 1,
+                "min_midi_value": 0,
+                "max_value": 1,
+                "min_value": 0,
+                "default_value": 0,
             }
         },
         "page_4": {
             "NHLD": {
-                "midi": {"cc_msb": "70", "nrpn_lsb": "1", "nrpn_msb": "97"}
+                "midi": {"cc_msb": "70", "nrpn_lsb": "1", "nrpn_msb": "97"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "NDEC": {
-                "midi": {"cc_msb": "71", "nrpn_lsb": "1", "nrpn_msb": "98"}
+                "midi": {"cc_msb": "71", "nrpn_lsb": "1", "nrpn_msb": "98"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "TRAN": {
-                "midi": {"cc_msb": "72", "nrpn_lsb": "1", "nrpn_msb": "99"}
+                "midi": {"cc_msb": "72", "nrpn_lsb": "1", "nrpn_msb": "99"},
+                "max_midi_value": 124,
+                "min_midi_value": 0,
+                "max_value": 124,
+                "min_value": 0,
+                "default_value": 0,
             },
             "TLEV": {
-                "midi": {"cc_msb": "73", "nrpn_lsb": "1", "nrpn_msb": "100"}
+                "midi": {"cc_msb": "73", "nrpn_lsb": "1", "nrpn_msb": "100"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "BASE": {
-                "midi": {"cc_msb": "74", "nrpn_lsb": "1", "nrpn_msb": "101"}
+                "midi": {"cc_msb": "74", "nrpn_lsb": "1", "nrpn_msb": "101"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "WDTH": {
-                "midi": {"cc_msb": "75", "nrpn_lsb": "1", "nrpn_msb": "102"}
+                "midi": {"cc_msb": "75", "nrpn_lsb": "1", "nrpn_msb": "102"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "GRAN": {
-                "midi": {"cc_msb": "76", "nrpn_lsb": "1", "nrpn_msb": "103"}
+                "midi": {"cc_msb": "76", "nrpn_lsb": "1", "nrpn_msb": "103"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "NLEV": {
-                "midi": {"cc_msb": "77", "nrpn_lsb": "1", "nrpn_msb": "104"}
+                "midi": {"cc_msb": "77", "nrpn_lsb": "1", "nrpn_msb": "104"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             }
         }
     },
     "fmtone": {
         "page_1": {
             "ALGO": {
-                "midi": {"cc_msb": "40", "nrpn_lsb": "1", "nrpn_msb": "73"}
+                "midi": {"cc_msb": "40", "nrpn_lsb": "1", "nrpn_msb": "73"},
+                "max_midi_value": 7,
+                "min_midi_value": 0,
+                "max_value": 8,
+                "min_value": 1,
+                "default_value": 0,
             },
             "C": {
-                "midi": {"cc_msb": "41", "nrpn_lsb": "1", "nrpn_msb": "74"}
+                "midi": {"cc_msb": "41", "nrpn_lsb": "1", "nrpn_msb": "74"},
+                "max_midi_value": 18,
+                "min_midi_value": 0,
+                "max_value": 16,
+                "min_value": 0.25,
+                "default_value": 1.00,
             },
             "A": {
-                "midi": {"cc_msb": "42", "nrpn_lsb": "1", "nrpn_msb": "75"}
+                "midi": {"cc_msb": "42", "nrpn_lsb": "1", "nrpn_msb": "75"},
+                "max_midi_value": 35,
+                "min_midi_value": 0,
+                "max_value": 16,
+                "min_value": 0.25,
+                "default_value": 1.00,
             },
             "B": {
-                "midi": {"cc_msb": "43", "nrpn_lsb": "1", "nrpn_msb": "76"}
+                "midi": {"cc_msb": "43", "nrpn_lsb": "1", "nrpn_msb": "76"},
+                "max_midi_value": 3,
+                "min_midi_value": 0,
+                "max_value": [16, 16],
+                "min_value": [0.25, 0.25],
+                "default_value": [1.00, 1.00],
             },
             "HARM": {
-                "midi": {"cc_msb": "44", "nrpn_lsb": "1", "nrpn_msb": "77"}
+                "midi": {"cc_msb": "44", "nrpn_lsb": "1", "nrpn_msb": "77"},
+                "max_midi_value": 37,
+                "min_midi_value": 90,
+                "max_value": 26,
+                "min_value": -26,
+                "default_value": 0.00,
             },
             "DTUN": {
-                "midi": {"cc_msb": "45", "nrpn_lsb": "1", "nrpn_msb": "78"}
+                "midi": {"cc_msb": "45", "nrpn_lsb": "1", "nrpn_msb": "78"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "FDBK": {
-                "midi": {"cc_msb": "46", "nrpn_lsb": "1", "nrpn_msb": "79"}
+                "midi": {"cc_msb": "46", "nrpn_lsb": "1", "nrpn_msb": "79"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "MIX": {
-                "midi": {"cc_msb": "47", "nrpn_lsb": "1", "nrpn_msb": "80"}
+                "midi": {"cc_msb": "47", "nrpn_lsb": "1", "nrpn_msb": "80"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 63,
+                "min_value": -63,
+                "default_value": -63,
             },
         },
         "page_2": {
             "A": {
                 "atk": {
-                    "midi": {"cc_msb": "48", "nrpn_lsb": "1", "nrpn_msb": "81"}
+                    "midi": {"cc_msb": "48", "nrpn_lsb": "1", "nrpn_msb": "81"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 0,
                 },
                 "dec": {
-                    "midi": {"cc_msb": "49", "nrpn_lsb": "1", "nrpn_msb": "82"}
+                    "midi": {"cc_msb": "49", "nrpn_lsb": "1", "nrpn_msb": "82"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 32,
                 },
                 "end": {
-                    "midi": {"cc_msb": "50", "nrpn_lsb": "1", "nrpn_msb": "83"}
+                    "midi": {"cc_msb": "50", "nrpn_lsb": "1", "nrpn_msb": "83"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 127,
                 },
                 "lev": {
-                    "midi": {"cc_msb": "51", "nrpn_lsb": "1", "nrpn_msb": "84"}
+                    "midi": {"cc_msb": "51", "nrpn_lsb": "1", "nrpn_msb": "84"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 0,
                 }
             },
             "B": {
                 "atk": {
-                    "midi": {"cc_msb": "52", "nrpn_lsb": "1", "nrpn_msb": "85"}
+                    "midi": {"cc_msb": "48", "nrpn_lsb": "1", "nrpn_msb": "81"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 0,
                 },
                 "dec": {
-                    "midi": {"cc_msb": "53", "nrpn_lsb": "1", "nrpn_msb": "86"}
+                    "midi": {"cc_msb": "49", "nrpn_lsb": "1", "nrpn_msb": "82"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 32,
                 },
                 "end": {
-                    "midi": {"cc_msb": "54", "nrpn_lsb": "1", "nrpn_msb": "87"}
+                    "midi": {"cc_msb": "50", "nrpn_lsb": "1", "nrpn_msb": "83"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 127,
                 },
                 "lev": {
-                    "midi": {"cc_msb": "55", "nrpn_lsb": "1", "nrpn_msb": "88"}
+                    "midi": {"cc_msb": "51", "nrpn_lsb": "1", "nrpn_msb": "84"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 0,
                 }
             }
         },
         "page_3": {
             "ADEL": {
-                "midi": {"cc_msb": "56", "nrpn_lsb": "1", "nrpn_msb": "89"}
+                "midi": {"cc_msb": "56", "nrpn_lsb": "1", "nrpn_msb": "89"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "ATRG": {
-                "midi": {"cc_msb": "57", "nrpn_lsb": "1", "nrpn_msb": "90"}
+                "midi": {"cc_msb": "57", "nrpn_lsb": "1", "nrpn_msb": "90"},
+                "max_midi_value": 1,
+                "min_midi_value": 0,
+                "max_value": 1,
+                "min_value": 0,
+                "default_value": 1,
             },
             "ARST": {
-                "midi": {"cc_msb": "58", "nrpn_lsb": "1", "nrpn_msb": "91"}
+                "midi": {"cc_msb": "58", "nrpn_lsb": "1", "nrpn_msb": "91"},
+                "max_midi_value": 1,
+                "min_midi_value": 0,
+                "max_value": 1,
+                "min_value": 0,
+                "default_value": 1,
             },
             "PHRT": {
-                "midi": {"cc_msb": "59", "nrpn_lsb": "1", "nrpn_msb": "92"}
+                "midi": {"cc_msb": "59", "nrpn_lsb": "1", "nrpn_msb": "92"},
+                "max_midi_value": 4,
+                "min_midi_value": 0,
+                "options": ["off", "all", "c", "a+b", "a+b2"],
+                "default_value": "all",
             },
             "BDEL": {
-                "midi": {"cc_msb": "60", "nrpn_lsb": "1", "nrpn_msb": "93"}
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "BTRG": {
-                "midi": {"cc_msb": "61", "nrpn_lsb": "1", "nrpn_msb": "94"}
+                "midi": {"cc_msb": "61", "nrpn_lsb": "1", "nrpn_msb": "94"},
+                "max_midi_value": 1,
+                "min_midi_value": 0,
+                "max_value": 1,
+                "min_value": 0,
+                "default_value": 1,
             },
             "BRST": {
-                "midi": {"cc_msb": "62", "nrpn_lsb": "1", "nrpn_msb": "95"}
+                "midi": {"cc_msb": "62", "nrpn_lsb": "1", "nrpn_msb": "95"},
+                "max_midi_value": 1,
+                "min_midi_value": 0,
+                "max_value": 1,
+                "min_value": 0,
+                "default_value": 1,
             }
         },
         "page_4": {
             "Ratio_Offset": {
                 "C": {
-                    "midi": {"cc_msb": "70", "nrpn_lsb": "1", "nrpn_msb": "97"}
+                    "midi": {"cc_msb": "70", "nrpn_lsb": "1", "nrpn_msb": "97"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": +0.999,
+                    "min_value": -1.00,
+                    "default_value": 0.00,
                 },
                 "A": {
-                    "midi": {"cc_msb": "71", "nrpn_lsb": "1", "nrpn_msb": "98"}
+                    "midi": {"cc_msb": "71", "nrpn_lsb": "1", "nrpn_msb": "98"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": +0.999,
+                    "min_value": -1.00,
+                    "default_value": 0.00,
                 },
                 "B1": {
-                    "midi": {"cc_msb": "72", "nrpn_lsb": "1", "nrpn_msb": "99"}
+                    "midi": {"cc_msb": "72", "nrpn_lsb": "1", "nrpn_msb": "99"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": +0.999,
+                    "min_value": -1.00,
+                    "default_value": 0.00,
                 },
                 "B2": {
-                    "midi": {"cc_msb": "73", "nrpn_lsb": "1", "nrpn_msb": "100"}
+                    "midi": {"cc_msb": "73", "nrpn_lsb": "1", "nrpn_msb": "100"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": +0.999,
+                    "min_value": -1.00,
+                    "default_value": 0.00,
                 }
             },
             "Key_Track": {
                 "A": {
-                    "midi": {"cc_msb": "74", "nrpn_lsb": "1", "nrpn_msb": "101"}
+                    "midi": {"cc_msb": "75", "nrpn_lsb": "1", "nrpn_msb": "102"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 0,
                 },
                 "B1": {
-                    "midi": {"cc_msb": "75", "nrpn_lsb": "1", "nrpn_msb": "102"}
+                    "midi": {"cc_msb": "76", "nrpn_lsb": "1", "nrpn_msb": "103"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 0,
                 },
                 "B2": {
-                    "midi": {"cc_msb": "76", "nrpn_lsb": "1", "nrpn_msb": "103"}
+                    "midi": {"cc_msb": "77", "nrpn_lsb": "1", "nrpn_msb": "104"},
+                    "max_midi_value": 127,
+                    "min_midi_value": 0,
+                    "max_value": 127,
+                    "min_value": 0,
+                    "default_value": 0,
                 }
             }
         }
@@ -218,165 +508,511 @@ elektron_fn_to_midi = {
     "swarmer": {
         "page_1": {
             "TUNE": {
-                "midi": {"cc_msb": "40", "nrpn_lsb": "1", "nrpn_msb": "73"}
+                "midi": {"cc_msb": "40", "nrpn_lsb": "1", "nrpn_msb": "73"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 60,
+                "min_value": -60,
+                "default_value": 0,
             },
             "SWRM": {
-                "midi": {"cc_msb": "41", "nrpn_lsb": "1", "nrpn_msb": "74"}
+                "midi": {"cc_msb": "41", "nrpn_lsb": "1", "nrpn_msb": "74"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 120,
+                "min_value": 0,
+                "default_value": 80,
             },
             "DET": {
-                "midi": {"cc_msb": "42", "nrpn_lsb": "1", "nrpn_msb": "75"}
+                "midi": {"cc_msb": "42", "nrpn_lsb": "1", "nrpn_msb": "75"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 70,
             },
             "MIX": {
-                "midi": {"cc_msb": "43", "nrpn_lsb": "1", "nrpn_msb": "76"}
+                "midi": {"cc_msb": "43", "nrpn_lsb": "1", "nrpn_msb": "76"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 127,
             },
             "M.OCT": {
-                "midi": {"cc_msb": "44", "nrpn_lsb": "1", "nrpn_msb": "77"}
+                "midi": {"cc_msb": "44", "nrpn_lsb": "1", "nrpn_msb": "77"},
+                "max_midi_value": 2,
+                "min_midi_value": 0,
+                "max_value": 2,
+                "min_value": 0,
+                "default_value": 0,
             },
             "MAIN": {
-                "midi": {"cc_msb": "45", "nrpn_lsb": "1", "nrpn_msb": "78"}
+                "midi": {"cc_msb": "45", "nrpn_lsb": "1", "nrpn_msb": "78"},
+                "max_midi_value": 120,
+                "min_midi_value": 0,
+                "max_value": 120,
+                "min_value": 0,
+                "default_value": 80,
             },
             "ANIM": {
-                "midi": {"cc_msb": "46", "nrpn_lsb": "1", "nrpn_msb": "79"}
+                "midi": {"cc_msb": "46", "nrpn_lsb": "1", "nrpn_msb": "79"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 15,
             },
             "N.MOD": {
-                "midi": {"cc_msb": "47", "nrpn_lsb": "1", "nrpn_msb": "80"}
+                "midi": {"cc_msb": "47", "nrpn_lsb": "1", "nrpn_msb": "80"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 20,
             }
         }
     },
     "wavetone": {
         "page_1": {
             "TUN1": {
-                "midi": {"cc_msb": "40", "nrpn_lsb": "1", "nrpn_msb": "73"}
+                "midi": {"cc_msb": "40", "nrpn_lsb": "1", "nrpn_msb": "73"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 60,
+                "min_value": -60,
+                "default_value": 0,
             },
             "WAV1": {
-                "midi": {"cc_msb": "41", "nrpn_lsb": "1", "nrpn_msb": "74"}
+                "midi": {"cc_msb": "41", "nrpn_lsb": "1", "nrpn_msb": "74"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 120,
+                "min_value": 0,
+                "default_value": 0,
             },
             "PD1": {
-                "midi": {"cc_msb": "42", "nrpn_lsb": "1", "nrpn_msb": "75"}
+                "midi": {"cc_msb": "42", "nrpn_lsb": "1", "nrpn_msb": "75"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 100,
+                "min_value": 0,
+                "default_value": 50,
             },
             "LEV1": {
-                "midi": {"cc_msb": "43", "nrpn_lsb": "1", "nrpn_msb": "76"}
+                "midi": {"cc_msb": "43", "nrpn_lsb": "1", "nrpn_msb": "76"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 100,
             },
             "TUN2": {
-                "midi": {"cc_msb": "44", "nrpn_lsb": "1", "nrpn_msb": "77"}
+                "midi": {"cc_msb": "44", "nrpn_lsb": "1", "nrpn_msb": "77"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 60,
+                "min_value": -60,
+                "default_value": 0,
             },
             "WAV2": {
-                "midi": {"cc_msb": "45", "nrpn_lsb": "1", "nrpn_msb": "78"}
+                "midi": {"cc_msb": "45", "nrpn_lsb": "1", "nrpn_msb": "78"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 120,
+                "min_value": 0,
+                "default_value": 0,
             },
             "PD2": {
-                "midi": {"cc_msb": "46", "nrpn_lsb": "1", "nrpn_msb": "79"}
+                "midi": {"cc_msb": "46", "nrpn_lsb": "1", "nrpn_msb": "79"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 100,
+                "min_value": 0,
+                "default_value": 50,
             },
             "LEV2": {
-                "midi": {"cc_msb": "47", "nrpn_lsb": "1", "nrpn_msb": "80"}
+                "midi": {"cc_msb": "47", "nrpn_lsb": "1", "nrpn_msb": "80"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 100,
             }
         },
         "page_2": {
             "OFS1": {
-                "midi": {"cc_msb": "48", "nrpn_lsb": "1", "nrpn_msb": "81"}
+                "midi": {"cc_msb": "48", "nrpn_lsb": "1", "nrpn_msb": "81"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 10,
+                "min_value": -10,
+                "default_value": 0,
             },
             "TBL1": {
-                "midi": {"cc_msb": "49", "nrpn_lsb": "1", "nrpn_msb": "82"}
+                "midi": {"cc_msb": "49", "nrpn_lsb": "1", "nrpn_msb": "82"},
+                "max_midi_value": 1,
+                "min_midi_value": 0,
+                "options": ["prim", "harm"],
+                "default_value": "prim",
             },
             "MOD": {
-                "midi": {"cc_msb": "50", "nrpn_lsb": "1", "nrpn_msb": "83"}
+                "midi": {"cc_msb": "50", "nrpn_lsb": "1", "nrpn_msb": "83"},
+                "max_midi_value": 3,
+                "min_midi_value": 0,
+                "options": ["off", "ring mod", "ring mod fixed", "hard sync"],
+                "default_value": "off",
             },
             "RSET": {
-                "midi": {"cc_msb": "51", "nrpn_lsb": "1", "nrpn_msb": "84"}
+                "midi": {"cc_msb": "51", "nrpn_lsb": "1", "nrpn_msb": "84"},
+                "max_midi_value": 2,
+                "min_midi_value": 0,
+                "options": ["off", "on", "random"],
+                "default_value": "on",
             },
             "OFS2": {
-                "midi": {"cc_msb": "52", "nrpn_lsb": "1", "nrpn_msb": "85"}
+                "midi": {"cc_msb": "52", "nrpn_lsb": "1", "nrpn_msb": "85"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 10,
+                "min_value": -10,
+                "default_value": 0,
             },
             "TBL2": {
-                "midi": {"cc_msb": "53", "nrpn_lsb": "1", "nrpn_msb": "86"}
+                "midi": {"cc_msb": "53", "nrpn_lsb": "1", "nrpn_msb": "86"},
+                "max_midi_value": 1,
+                "min_midi_value": 0,
+                "options": ["prim", "harm"],
+                "default_value": "prim",
             },
             "DRIF": {
-                "midi": {"cc_msb": "54", "nrpn_lsb": "1", "nrpn_msb": "87"}
+                "midi": {"cc_msb": "55", "nrpn_lsb": "1", "nrpn_msb": "88"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             }
         },
         "page_3": {
             "ATK": {
-                "midi": {"cc_msb": "56", "nrpn_lsb": "1", "nrpn_msb": "89"}
+                "midi": {"cc_msb": "56", "nrpn_lsb": "1", "nrpn_msb": "89"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "HOLD": {
-                "midi": {"cc_msb": "57", "nrpn_lsb": "1", "nrpn_msb": "90"}
+                "midi": {"cc_msb": "57", "nrpn_lsb": "1", "nrpn_msb": "90"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 127,
             },
             "DEC": {
-                "midi": {"cc_msb": "58", "nrpn_lsb": "1", "nrpn_msb": "91"}
+                "midi": {"cc_msb": "58", "nrpn_lsb": "1", "nrpn_msb": "91"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 127,
             },
             "NLEV": {
-                "midi": {"cc_msb": "59", "nrpn_lsb": "1", "nrpn_msb": "92"}
+                "midi": {"cc_msb": "59", "nrpn_lsb": "1", "nrpn_msb": "92"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "BASE": {
-                "midi": {"cc_msb": "60", "nrpn_lsb": "1", "nrpn_msb": "93"}
+                "midi": {"cc_msb": "60", "nrpn_lsb": "1", "nrpn_msb": "93"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             },
             "WDTH": {
-                "midi": {"cc_msb": "61", "nrpn_lsb": "1", "nrpn_msb": "94"}
+                "midi": {"cc_msb": "61", "nrpn_lsb": "1", "nrpn_msb": "94"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 127,
             },
             "TYPE": {
-                "midi": {"cc_msb": "62", "nrpn_lsb": "1", "nrpn_msb": "95"}
+                "midi": {"cc_msb": "62", "nrpn_lsb": "1", "nrpn_msb": "95"},
+                "max_midi_value": 2,
+                "min_midi_value": 0,
+                "options": ["grain nose", "tuned noise", "sample and hold noise"],
+                "default_value": 0,
             },
             "CHAR": {
-                "midi": {"cc_msb": "63", "nrpn_lsb": "1", "nrpn_msb": "96"}
+                "midi": {"cc_msb": "63", "nrpn_lsb": "1", "nrpn_msb": "96"},
+                "max_midi_value": 127,
+                "min_midi_value": 0,
+                "max_value": 127,
+                "min_value": 0,
+                "default_value": 0,
             }
         }
     },
     "Multi-mode filter": {
-        "ATK": {"cc_msb": "20", "nrpn_lsb": "1", "nrpn_msb": "16"},
-        "DEC": {"cc_msb": "21", "nrpn_lsb": "1", "nrpn_msb": "17"},
-        "SUS": {"cc_msb": "22", "nrpn_lsb": "1", "nrpn_msb": "18"},
-        "REL": {"cc_msb": "23", "nrpn_lsb": "1", "nrpn_msb": "19"},
-        "FREQ": {"cc_msb": "16", "nrpn_lsb": "1", "nrpn_msb": "20"},
-        "RESO": {"cc_msb": "17", "nrpn_lsb": "1", "nrpn_msb": "21"},
-        "TYPE": {"cc_msb": "18", "nrpn_lsb": "1", "nrpn_msb": "22"},
-        "ENV.Depth": {
-            "cc_msb": "24",
-            "nrpn_lsb": "1",
-            "nrpn_msb": "26",
+        "ATK": {
+            "midi": {"cc_msb": "20", "nrpn_lsb": "1", "nrpn_msb": "16"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "DEC": {
+            "midi": {"cc_msb": "21", "nrpn_lsb": "1", "nrpn_msb": "17"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 64,
+        },
+        "SUS": {
+            "midi": {"cc_msb": "22", "nrpn_lsb": "1", "nrpn_msb": "18"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "REL": {
+            "midi": {"cc_msb": "23", "nrpn_lsb": "1", "nrpn_msb": "19"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 64,
+        },
+        "FREQ": {
+            "midi": {"cc_msb": "16", "nrpn_lsb": "1", "nrpn_msb": "20"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 127,
+        },
+        "RESO": {
+            "midi": {"cc_msb": "17", "nrpn_lsb": "1", "nrpn_msb": "21"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "TYPE": {
+            "midi": {"cc_msb": "18", "nrpn_lsb": "1", "nrpn_msb": "22"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "ENV Depth": {
+            "midi": {"cc_msb": "24", "nrpn_lsb": "1", "nrpn_msb": "26"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 64,
+            "min_value": -64,
+            "default_value": 0,
         },
     },
-    "Lowpass filter": {
-        "ATK": {"cc_msb": "20", "nrpn_lsb": "1", "nrpn_msb": "16"},
-        "DEC": {"cc_msb": "21", "nrpn_lsb": "1", "nrpn_msb": "17"},
-        "SUS": {"cc_msb": "22", "nrpn_lsb": "1", "nrpn_msb": "18"},
-        "REL": {"cc_msb": "23", "nrpn_lsb": "1", "nrpn_msb": "19"},
-        "FREQ": {"cc_msb": "16", "nrpn_lsb": "1", "nrpn_msb": "20"},
-        "RESO": {"cc_msb": "17", "nrpn_lsb": "1", "nrpn_msb": "21"},
+    "Lowpass 4 filter": {
+        "ATK": {
+            "midi": {"cc_msb": "20", "nrpn_lsb": "1", "nrpn_msb": "16"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "DEC": {
+            "midi": {"cc_msb": "21", "nrpn_lsb": "1", "nrpn_msb": "17"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 64,
+        },
+        "SUS": {
+            "midi": {"cc_msb": "22", "nrpn_lsb": "1", "nrpn_msb": "18"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "REL": {
+            "midi": {"cc_msb": "23", "nrpn_lsb": "1", "nrpn_msb": "19"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 64,
+        },
+        "FREQ": {
+            "midi": {"cc_msb": "16", "nrpn_lsb": "1", "nrpn_msb": "20"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "RESO": {
+            "midi": {"cc_msb": "17", "nrpn_lsb": "1", "nrpn_msb": "21"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
         "ENV.Depth": {
-            "cc_msb": "24",
-            "nrpn_lsb": "1",
-            "nrpn_msb": "26",
+            "midi": {"cc_msb": "24", "nrpn_lsb": "1", "nrpn_msb": "26"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 64,
+            "min_value": -64,
+            "default_value": 0,
         },
     },
     "Legacy LP/HP filter": {
-        "ATK": {"cc_msb": "20", "nrpn_lsb": "1", "nrpn_msb": "16"},
-        "DEC": {"cc_msb": "21", "nrpn_lsb": "1", "nrpn_msb": "17"},
-        "SUS": {"cc_msb": "22", "nrpn_lsb": "1", "nrpn_msb": "18"},
-        "REL": {"cc_msb": "23", "nrpn_lsb": "1", "nrpn_msb": "19"},
-        "FREQ": {"cc_msb": "16", "nrpn_lsb": "1", "nrpn_msb": "20"},
-        "RESO": {"cc_msb": "17", "nrpn_lsb": "1", "nrpn_msb": "21"},
+        "ATK": {
+            "midi": {"cc_msb": "20", "nrpn_lsb": "1", "nrpn_msb": "16"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "DEC": {
+            "midi": {"cc_msb": "21", "nrpn_lsb": "1", "nrpn_msb": "17"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 64,
+        },
+        "SUS": {
+            "midi": {"cc_msb": "22", "nrpn_lsb": "1", "nrpn_msb": "18"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "REL": {
+            "midi": {"cc_msb": "23", "nrpn_lsb": "1", "nrpn_msb": "19"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 64,
+        },
+        "FREQ": {
+            "midi": {"cc_msb": "16", "nrpn_lsb": "1", "nrpn_msb": "20"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "RESO": {
+            "midi": {"cc_msb": "17", "nrpn_lsb": "1", "nrpn_msb": "21"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
         "TYPE(lowpass/highpass)": {
-            "cc_msb": "18",
-            "nrpn_lsb": "1",
-            "nrpn_msb": "22",
+            "midi": {"cc_msb": "18", "nrpn_lsb": "1", "nrpn_msb": "22"},
+            "max_midi_value": 2,
+            "min_midi_value": 0,
+            "options": ["lowpass", "highpass", "off"],
+            "default_value": 0,
         },
         "ENV.Depth": {
-            "cc_msb": "24",
-            "nrpn_lsb": "1",
-            "nrpn_msb": "26",
+            "midi": {"cc_msb": "24", "nrpn_lsb": "1", "nrpn_msb": "26"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 64,
+            "min_value": -64,
+            "default_value": 0,
         },
     },
     "Comb- filter": {
-        "ATK": {"cc_msb": "20", "nrpn_lsb": "1", "nrpn_msb": "16"},
-        "DEC": {"cc_msb": "21", "nrpn_lsb": "1", "nrpn_msb": "17"},
-        "SUS": {"cc_msb": "22", "nrpn_lsb": "1", "nrpn_msb": "18"},
-        "REL": {"cc_msb": "23", "nrpn_lsb": "1", "nrpn_msb": "19"},
-        "FREQ": {"cc_msb": "16", "nrpn_lsb": "1", "nrpn_msb": "20"},
-        "FDBK": {"cc_msb": "17", "nrpn_lsb": "1", "nrpn_msb": "21"},
-        "LPF": {"cc_msb": "18", "nrpn_lsb": "1", "nrpn_msb": "22"},
+        "ATK": {
+            "midi": {"cc_msb": "20", "nrpn_lsb": "1", "nrpn_msb": "16"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "DEC": {
+            "midi": {"cc_msb": "21", "nrpn_lsb": "1", "nrpn_msb": "17"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 64,
+        },
+        "SUS": {
+            "midi": {"cc_msb": "22", "nrpn_lsb": "1", "nrpn_msb": "18"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "REL": {
+            "midi": {"cc_msb": "23", "nrpn_lsb": "1", "nrpn_msb": "19"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 64,
+        },
+        "FREQ": {
+            "midi": {"cc_msb": "16", "nrpn_lsb": "1", "nrpn_msb": "20"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 127,
+        },
+        "FDBK": {
+            "midi": {"cc_msb": "17", "nrpn_lsb": "1", "nrpn_msb": "21"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
+        "LPF": {
+            "midi": {"cc_msb": "18", "nrpn_lsb": "1", "nrpn_msb": "22"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 127,
+            "min_value": 0,
+            "default_value": 0,
+        },
         "ENV.Depth": {
-            "cc_msb": "24",
-            "nrpn_lsb": "1",
-            "nrpn_msb": "26",
+            "midi": {"cc_msb": "24", "nrpn_lsb": "1", "nrpn_msb": "26"},
+            "max_midi_value": 127,
+            "min_midi_value": 0,
+            "max_value": 64,
+            "min_value": -64,
+            "default_value": 0,
         },
     },
     "Comb+ filter": {
