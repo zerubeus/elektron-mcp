@@ -1,13 +1,10 @@
 from typing import Dict, List, Union, Optional
 from pydantic import BaseModel, Field, model_validator
-from .constants import (
-    LFO1_PARAMS,
-    LFO2_PARAMS,
-    LFO3_PARAMS,
-    FMDRUM_PARAMS,
-    FMTONE_PARAMS,
-    MULTI_MODE_FILTER_PARAMS,
-)
+
+from elektron_mcp.constants.filters import MULTI_MODE_FILTER_PARAMS
+from elektron_mcp.constants.fm_drum import FM_DRUM_PARAMS
+from elektron_mcp.constants.fm_tone import FM_TONE_PARAMS
+from elektron_mcp.constants.lfo import LFO1_PARAMS, LFO2_PARAMS, LFO3_PARAMS
 
 
 class MidiMapping(BaseModel):
@@ -150,7 +147,14 @@ def create_parameter(
     options=None,
 ):
     """Helper function to create a parameter with midi mapping"""
-    mapping = MidiMapping(cc_msb=cc_msb, nrpn_lsb=nrpn_lsb, nrpn_msb=nrpn_msb)
+    # Convert numeric values to strings for MIDI parameters
+    cc_msb_str = str(cc_msb) if isinstance(cc_msb, (int, float)) else cc_msb
+    nrpn_lsb_str = str(nrpn_lsb) if isinstance(nrpn_lsb, (int, float)) else nrpn_lsb
+    nrpn_msb_str = str(nrpn_msb) if isinstance(nrpn_msb, (int, float)) else nrpn_msb
+
+    mapping = MidiMapping(
+        cc_msb=cc_msb_str, nrpn_lsb=nrpn_lsb_str, nrpn_msb=nrpn_msb_str
+    )
     return ElektronParams(
         midi=mapping,
         max_midi_value=max_midi,
@@ -166,9 +170,9 @@ def create_lfo_params(params_config):
     """Create LFO parameters with explicit CC and NRPN values."""
     return {
         name: create_parameter(
-            cc_msb=str(param["cc"]),
+            cc_msb=str(param.get("cc_msb", param.get("cc"))),
             nrpn_lsb="1",
-            nrpn_msb=str(param["nrpn"]),
+            nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
             max_midi=param.get("max_midi", 127),
             min_midi=param.get("min_midi", 0),
             max_val=param.get("max_val", 127),
@@ -184,12 +188,12 @@ def create_parameter_group(params_dict):
     """Helper function to create a parameter group from a dictionary"""
     parameters = {}
     for key, value in params_dict.items():
-        if isinstance(value, dict) and "cc" in value:
+        if isinstance(value, dict) and ("cc" in value or "cc_msb" in value):
             # This is a parameter definition
             parameters[key] = create_parameter(
-                cc_msb=str(value["cc"]),
-                nrpn_lsb="1",  # Default value
-                nrpn_msb=str(value["nrpn"]),
+                cc_msb=str(value.get("cc_msb", value.get("cc"))),
+                nrpn_lsb=str(value.get("nrpn_lsb", "1")),  # Default value
+                nrpn_msb=str(value.get("nrpn_msb", value.get("nrpn"))),
                 max_midi=value.get("max_midi", 127),
                 min_midi=value.get("min_midi", 0),
                 max_val=value.get("max_val", 127),
@@ -202,9 +206,11 @@ def create_parameter_group(params_dict):
             nested_params = {}
             for nested_key, nested_value in value.items():
                 nested_params[nested_key] = create_parameter(
-                    cc_msb=str(nested_value["cc"]),
-                    nrpn_lsb="1",  # Default value
-                    nrpn_msb=str(nested_value["nrpn"]),
+                    cc_msb=str(nested_value.get("cc_msb", nested_value.get("cc"))),
+                    nrpn_lsb=str(nested_value.get("nrpn_lsb", "1")),  # Default value
+                    nrpn_msb=str(
+                        nested_value.get("nrpn_msb", nested_value.get("nrpn"))
+                    ),
                     max_midi=nested_value.get("max_midi", 127),
                     min_midi=nested_value.get("min_midi", 0),
                     max_val=nested_value.get("max_val", 127),
@@ -228,18 +234,37 @@ elektron_config.lfo.lfo_groups = {
 
 # Set up FMDRUM parameters
 elektron_config.fmdrum.pages = {
-    page: create_parameter_group(params) for page, params in FMDRUM_PARAMS.items()
+    page: create_parameter_group(params) for page, params in FM_DRUM_PARAMS.items()
 }
 
 # Set up FMTONE parameters
 elektron_config.fmtone.pages = {
-    page: create_parameter_group(params) for page, params in FMTONE_PARAMS.items()
+    page: create_parameter_group(params) for page, params in FM_TONE_PARAMS.items()
 }
 
 # Set up filter parameters
-elektron_config.multi_mode_filter.parameters = create_parameter_group(
-    MULTI_MODE_FILTER_PARAMS
-).parameters
+elektron_config.multi_mode_filter.parameters = {
+    name: create_parameter(
+        cc_msb=str(param.get("cc_msb", param.get("cc"))),
+        nrpn_lsb="1",
+        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
+        max_midi=param.get("max_midi", 127),
+        min_midi=param.get("min_midi", 0),
+        max_val=param.get("max_val", 127),
+        min_val=param.get("min_val", 0),
+        default=param.get("default", 0),
+        options=param.get("options", None),
+    )
+    for name, param in MULTI_MODE_FILTER_PARAMS.items()
+}
+
+# Set up other filter parameters
+elektron_config.lowpass_4_filter.parameters = {}
+elektron_config.legacy_lp_hp_filter.parameters = {}
+elektron_config.comb_minus_filter.parameters = {}
+elektron_config.comb_plus_filter.parameters = {}
+elektron_config.equalizer_filter.parameters = {}
+elektron_config.base_width_filter.parameters = {}
 
 # AMP page
 elektron_config.amp_page.parameters = {
