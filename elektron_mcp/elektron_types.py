@@ -1,7 +1,15 @@
 from typing import Dict, List, Union, Optional
 from pydantic import BaseModel, Field, model_validator
 
-from elektron_mcp.constants.filters import MULTI_MODE_FILTER_PARAMS
+from elektron_mcp.constants.filters import (
+    MULTI_MODE_FILTER_PARAMS,
+    LOWPASS_4_FILTER_PARAMS,
+    LEGACY_LP_HP_FILTER_PARAMS,
+    COMB_PLUS_FILTER_PARAMS,
+    COMB_MINUS_FILTER_PARAMS,
+    EQUALIZER_FILTER_PARAMS,
+    BASE_WIDTH_FILTER_PARAMS,
+)
 from elektron_mcp.constants.fm_drum import FM_DRUM_PARAMS
 from elektron_mcp.constants.fm_tone import FM_TONE_PARAMS
 from elektron_mcp.constants.lfo import LFO1_PARAMS, LFO2_PARAMS, LFO3_PARAMS
@@ -259,12 +267,95 @@ elektron_config.multi_mode_filter.parameters = {
 }
 
 # Set up other filter parameters
-elektron_config.lowpass_4_filter.parameters = {}
-elektron_config.legacy_lp_hp_filter.parameters = {}
-elektron_config.comb_minus_filter.parameters = {}
-elektron_config.comb_plus_filter.parameters = {}
-elektron_config.equalizer_filter.parameters = {}
-elektron_config.base_width_filter.parameters = {}
+elektron_config.lowpass_4_filter.parameters = {
+    name: create_parameter(
+        cc_msb=str(param.get("cc_msb", param.get("cc"))),
+        nrpn_lsb="1",
+        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
+        max_midi=param.get("max_midi", 127),
+        min_midi=param.get("min_midi", 0),
+        max_val=param.get("max_val", 127),
+        min_val=param.get("min_val", 0),
+        default=param.get("default", 0),
+        options=param.get("options", None),
+    )
+    for name, param in LOWPASS_4_FILTER_PARAMS.items()
+}
+
+elektron_config.legacy_lp_hp_filter.parameters = {
+    name: create_parameter(
+        cc_msb=str(param.get("cc_msb", param.get("cc"))),
+        nrpn_lsb="1",
+        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
+        max_midi=param.get("max_midi", 127),
+        min_midi=param.get("min_midi", 0),
+        max_val=param.get("max_val", 127),
+        min_val=param.get("min_val", 0),
+        default=param.get("default", 0),
+        options=param.get("options", None),
+    )
+    for name, param in LEGACY_LP_HP_FILTER_PARAMS.items()
+}
+
+elektron_config.comb_minus_filter.parameters = {
+    name: create_parameter(
+        cc_msb=str(param.get("cc_msb", param.get("cc"))),
+        nrpn_lsb="1",
+        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
+        max_midi=param.get("max_midi", 127),
+        min_midi=param.get("min_midi", 0),
+        max_val=param.get("max_val", 127),
+        min_val=param.get("min_val", 0),
+        default=param.get("default", 0),
+        options=param.get("options", None),
+    )
+    for name, param in COMB_MINUS_FILTER_PARAMS.items()
+}
+
+elektron_config.comb_plus_filter.parameters = {
+    name: create_parameter(
+        cc_msb=str(param.get("cc_msb", param.get("cc"))),
+        nrpn_lsb="1",
+        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
+        max_midi=param.get("max_midi", 127),
+        min_midi=param.get("min_midi", 0),
+        max_val=param.get("max_val", 127),
+        min_val=param.get("min_val", 0),
+        default=param.get("default", 0),
+        options=param.get("options", None),
+    )
+    for name, param in COMB_PLUS_FILTER_PARAMS.items()
+}
+
+elektron_config.equalizer_filter.parameters = {
+    name: create_parameter(
+        cc_msb=str(param.get("cc_msb", param.get("cc"))),
+        nrpn_lsb="1",
+        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
+        max_midi=param.get("max_midi", 127),
+        min_midi=param.get("min_midi", 0),
+        max_val=param.get("max_val", 127),
+        min_val=param.get("min_val", 0),
+        default=param.get("default", 0),
+        options=param.get("options", None),
+    )
+    for name, param in EQUALIZER_FILTER_PARAMS.items()
+}
+
+elektron_config.base_width_filter.parameters = {
+    name: create_parameter(
+        cc_msb=str(param.get("cc_msb", param.get("cc"))),
+        nrpn_lsb="1",
+        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
+        max_midi=param.get("max_midi", 127),
+        min_midi=param.get("min_midi", 0),
+        max_val=param.get("max_val", 127),
+        min_val=param.get("min_val", 0),
+        default=param.get("default", 0),
+        options=param.get("options", None),
+    )
+    for name, param in BASE_WIDTH_FILTER_PARAMS.items()
+}
 
 # AMP page
 elektron_config.amp_page.parameters = {

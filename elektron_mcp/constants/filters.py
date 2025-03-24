@@ -7,7 +7,7 @@ MULTI_MODE_FILTER_PARAMS = {
     "FREQ": {"cc_msb": 16, "nrpn_lsb": "1", "nrpn_msb": 20, "default": 127},
     "RESO": {"cc_msb": 17, "nrpn_lsb": "1", "nrpn_msb": 21},
     "TYPE": {"cc_msb": 18, "nrpn_lsb": "1", "nrpn_msb": 22},
-    "ENV Depth": {
+    "ENV.Depth": {
         "cc_msb": 24,
         "nrpn_lsb": "1",
         "nrpn_msb": 26,
@@ -23,7 +23,7 @@ LOWPASS_4_FILTER_PARAMS = {
     "REL": {"cc_msb": 23, "nrpn_lsb": "1", "nrpn_msb": 19, "default": 64},
     "FREQ": {"cc_msb": 16, "nrpn_lsb": "1", "nrpn_msb": 20, "default": 127},
     "RESO": {"cc_msb": 17, "nrpn_lsb": "1", "nrpn_msb": 21},
-    "ENV Depth": {
+    "ENV.Depth": {
         "cc_msb": 24,
         "nrpn_lsb": "1",
         "nrpn_msb": 26,
@@ -81,6 +81,23 @@ LEGACY_LP_HP_FILTER_PARAMS = {
         "options": ["lowpass", "highpass", "off"],
         "default": 0,
     },
+    "ENV.Depth": {
+        "cc_msb": 24,
+        "nrpn_lsb": "1",
+        "nrpn_msb": 26,
+        "max_val": 64,
+        "min_val": -64,
+    },
+}
+
+COMB_MINUS_FILTER_PARAMS = {
+    "ATK": {"cc_msb": 20, "nrpn_lsb": "1", "nrpn_msb": 16},
+    "DEC": {"cc_msb": 21, "nrpn_lsb": "1", "nrpn_msb": 17, "default": 64},
+    "SUS": {"cc_msb": 22, "nrpn_lsb": "1", "nrpn_msb": 18},
+    "REL": {"cc_msb": 23, "nrpn_lsb": "1", "nrpn_msb": 19, "default": 64},
+    "FREQ": {"cc_msb": 16, "nrpn_lsb": "1", "nrpn_msb": 20, "default": 127},
+    "FDBK": {"cc_msb": 17, "nrpn_lsb": "1", "nrpn_msb": 21},
+    "LPF": {"cc_msb": 18, "nrpn_lsb": "1", "nrpn_msb": 22, "default": 127},
     "ENV.Depth": {
         "cc_msb": 24,
         "nrpn_lsb": "1",
