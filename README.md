@@ -1,6 +1,6 @@
 # Elektron MCP
 
-A Python library for working with Elektron synthesizers via MIDI Control Protocol (MCP).
+A Python library for working with Elektron synthesizers via Model Control Protocol (MCP).
 
 ## Features
 

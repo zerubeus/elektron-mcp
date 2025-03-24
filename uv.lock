@@ -119,8 +119,10 @@ source = { editable = "." }
 dependencies = [
     { name = "black" },
     { name = "fastmcp" },
+    { name = "mido" },
     { name = "pydantic" },
     { name = "pydantic-ai-slim", extra = ["mcp"] },
+    { name = "python-rtmidi" },
 ]
 
 [package.dev-dependencies]
@@ -134,8 +136,10 @@ dev = [
 requires-dist = [
     { name = "black", specifier = ">=25.1.0" },
     { name = "fastmcp", specifier = ">=0.4.1" },
+    { name = "mido", specifier = ">=1.3.1" },
     { name = "pydantic", specifier = ">=2.10.6" },
     { name = "pydantic-ai-slim", extras = ["mcp"], specifier = ">=0.0.43" },
+    { name = "python-rtmidi", specifier = ">=1.5.7" },
 ]
 
 [package.metadata.requires-dev]
@@ -332,6 +336,18 @@ wheels = [
 ]
 
 [[package]]
+name = "mido"
+version = "1.3.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/23/14/cfda3fe61ce4c0f50a9f707ae02b46cb53211732b2cd4522bf06272848f4/mido-1.3.3.tar.gz", hash = "sha256:1aecb30b7f282404f17e43768cbf74a6a31bf22b3b783bdd117a1ce9d22cb74c", size = 124288 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fd/28/45deb15c11859d2f10702b32e71de9328a9fa494f989626916db39a9617f/mido-1.3.3-py3-none-any.whl", hash = "sha256:01033c9b10b049e4436fca2762194ca839b09a4334091dd3c34e7f4ae674fd8a", size = 54614 },
+]
+
+[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -524,6 +540,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/bc/57/e84d88dfe0aec03b7a2d4327012c1627ab5f03652216c63d49846d7a6c58/python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca", size = 39115 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/6a/3e/b68c118422ec867fa7ab88444e1274aa40681c606d59ac27de5a5588f082/python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a", size = 19863 },
+]
+
+[[package]]
+name = "python-rtmidi"
+version = "1.5.8"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/dd/ee/0f91965dcc471714c69df21e5ca3d94dc81411b7dee2d31ff1184bea07c9/python_rtmidi-1.5.8.tar.gz", hash = "sha256:7f9ade68b068ae09000ecb562ae9521da3a234361ad5449e83fc734544d004fa", size = 368130 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/51/27/887b0378e0a907489a07bdeb808fa5ed349675245c6ee14d9f6d00304f96/python_rtmidi-1.5.8-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:5443634597eb340cdec0734f76267a827c2d366f00a6f9195141c78828016ac2", size = 158861 },
+    { url = "https://files.pythonhosted.org/packages/4d/ec/57cecde253daab896ce53778520cd41eb062641862ebdb0ee6f97511b1d9/python_rtmidi-1.5.8-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:29d9c9d9f82ce679fecad7bb4cb79f3a24574ea84600e377194b4cc1baacec0e", size = 153416 },
+    { url = "https://files.pythonhosted.org/packages/6f/5b/dc19c53d9d512b74dc2cca3725591cc612b9465645695a0696352a8c8b54/python_rtmidi-1.5.8-cp312-cp312-manylinux_2_28_aarch64.whl", hash = "sha256:25f5a5db7be98911c41ca5bebb262fcf9a7c89600b88fd3c207ceafd3101e721", size = 305696 },
+    { url = "https://files.pythonhosted.org/packages/f6/92/5a60f56dfb2740e644e932233928947423cd2101895319b331f84527eb31/python_rtmidi-1.5.8-cp312-cp312-manylinux_2_28_x86_64.whl", hash = "sha256:cec30924e305f55284594ccf35a71dee7216fd308dfa2dec1b3ed03e6f243803", size = 315579 },
+    { url = "https://files.pythonhosted.org/packages/93/46/6af077d262f521ea2bf1ab60b8aad72f34fe6dd55af739176605369d449c/python_rtmidi-1.5.8-cp312-cp312-win_amd64.whl", hash = "sha256:052c89933cae4fca354012d8ca7248f4f9e1e3f062471409d48415a7f7d7e59e", size = 129755 },
 ]
 
 [[package]]
