@@ -2,11 +2,5 @@ This app is a Model Context Protocol server that allows Claude and other MCP-com
 
 ## Features
 
-- [ ] Map all Digitone params in `elektron_mpc/digitone_params.py`
+- [x] Map all Digitone config params to MIDI values and display values in `elektron_mpc/digitone/digitone_config.py`
 - [ ] Method to Connect to Hardware machine (Digitone) via MIDI USB
-- [ ] Method to send MIDI messages to the Hardware machine
-- [ ] MPC tool to pick a synth machine type from the following:
-  - FM TONE
-  - FM DRUM
-  - WAVETONE
-  - SWARMER
