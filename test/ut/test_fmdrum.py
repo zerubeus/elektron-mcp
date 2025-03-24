@@ -1,4 +1,4 @@
-from elektron_mcp.digitone.digitone_params import digitone_config
+from elektron_mcp.digitone.digitone_config import digitone_config
 
 
 def test_fmdrum_page1_all_params():
