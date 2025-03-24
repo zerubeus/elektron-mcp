@@ -1,4 +1,4 @@
-from elektron_mcp.elektron_types import (
+from elektron_mcp.elektron_params import (
     elektron_config,
 )
 

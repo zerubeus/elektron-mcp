@@ -1,4 +1,4 @@
-from elektron_mcp.elektron_types import elektron_config
+from elektron_mcp.elektron_params import elektron_config
 
 
 def test_lfo1_all_params():

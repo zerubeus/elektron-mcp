@@ -1,4 +1,4 @@
-from .elektron_types import elektron_config
+from .elektron_params import elektron_config
 
 
 def main():
