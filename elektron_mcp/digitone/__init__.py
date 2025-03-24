@@ -10,7 +10,7 @@ from .models import (
     DigitoneConfig,
 )
 
-from .digitone_config import digitone_config
+from elektron_mcp.digitone.config.digitone_config import digitone_config
 
 from .utils import (
     create_parameter,

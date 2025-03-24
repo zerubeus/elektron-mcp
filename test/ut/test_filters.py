@@ -1,4 +1,4 @@
-from elektron_mcp.digitone.digitone_config import digitone_config
+from elektron_mcp.digitone.config.digitone_config import digitone_config
 
 
 def test_multi_mode_filter():
