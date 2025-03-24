@@ -52,6 +52,7 @@ This launches the FastMCP Inspector web interface where you can test tools inter
 ```bash
 # Run the server in development mode
 fastmcp dev elektron_mcp/main.py
+
 ```
 
 #### 2. Direct Execution
@@ -71,7 +72,30 @@ fastmcp run elektron_mcp/main.py
 
 #### 3. Installing with Claude Desktop
 
-To use with Claude AI, install the server in Claude Desktop:
+To use with Claude AI, add the MCP server configuration in Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "Digitone 2": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with-editable",
+        "/Users/yourusername/elektron-mcp",
+        "python",
+        "-m",
+        "elektron_mcp.main"
+      ],
+      "cwd": "/Users/yourusername/elektron-mcp"
+    }
+  }
+}
+```
+
+The `--with-editable` flag is key as it adds the project directory to Python's path, solving module import issues.
+
+You can also install the server using the FastMCP CLI:
 
 ```bash
 # Install the server for use with Claude
@@ -94,6 +118,59 @@ export MIDI_PORT="Digitone"
 
 # Then run the server
 python -m elektron_mcp.main
+```
+
+### Troubleshooting
+
+If you encounter issues running the server, here are some common problems and their solutions:
+
+#### Server Crashes on Startup
+
+If you see an error like "Server transport closed unexpectedly," check for these issues:
+
+1. **MIDI Device Connection**: Ensure your Digitone is connected via USB and turned on. The server requires a connected Digitone to function properly.
+
+2. **Check MIDI Port Names**: You can run this command to see available MIDI ports:
+
+   ```python
+   python -c "import mido; print(mido.get_input_names(), mido.get_output_names())"
+   ```
+
+3. **Run with Debug Output**: For more verbose logging:
+
+   ```bash
+   python -m elektron_mcp.main
+   ```
+
+   This will show detailed error messages on stderr, which is helpful for diagnosing issues.
+
+4. **Specify MIDI Port**: If auto-detection fails, specify your MIDI port:
+
+   ```bash
+   # For direct execution
+   MIDI_PORT="Your Digitone Port Name" python -m elektron_mcp.main
+
+   # For Claude Desktop installation
+   fastmcp install elektron_mcp/main.py -e MIDI_PORT="Your Digitone Port Name"
+   ```
+
+#### Missing Dependencies
+
+If you see import errors, ensure all dependencies are installed:
+
+```bash
+# Reinstall with all dependencies
+uv pip install -e .
+```
+
+#### Permission Issues
+
+On some systems, you might need permission to access MIDI devices:
+
+```bash
+# Linux
+sudo usermod -a -G audio $USER
+# Then log out and log back in
 ```
 
 ## Architecture

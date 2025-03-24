@@ -5,10 +5,16 @@ from elektron_mcp.digitone.controller import filter_controller
 from elektron_mcp.digitone.controller import amp_fx_controller
 from elektron_mcp.midi.digitone_midi import DigitoneMIDI
 from elektron_mcp.digitone.config import digitone_config
+from elektron_mcp.digitone.constants.wavetone import WAVETONE_PARAMS
+from elektron_mcp.digitone.utils.parameter_utils import create_parameter_group
 
 
 mcp = FastMCP("Digitone 2")
 midi = DigitoneMIDI()
+
+wavetone_pages = {
+    page: create_parameter_group(params) for page, params in WAVETONE_PARAMS.items()
+}
 
 
 @mcp.tool()
@@ -21,7 +27,7 @@ def set_wavetone_osc1_pitch(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc1_pitch(value)
 
 
@@ -35,7 +41,7 @@ def set_wavetone_osc1_waveform(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc1_waveform(value)
 
 
@@ -49,7 +55,7 @@ def set_wavetone_osc1_phase_distortion(value: int):
     Default: 50
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc1_phase_distortion(value)
 
 
@@ -63,7 +69,7 @@ def set_wavetone_osc1_level(value: int):
     Default: 100
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc1_level(value)
 
 
@@ -77,7 +83,7 @@ def set_wavetone_osc1_offset(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc1_offset(value)
 
 
@@ -91,7 +97,7 @@ def set_wavetone_osc1_table(value: int):
     Default: "prim"
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc1_table(value)
 
 
@@ -105,7 +111,7 @@ def set_wavetone_osc2_pitch(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc2_pitch(value)
 
 
@@ -119,7 +125,7 @@ def set_wavetone_osc2_waveform(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc2_waveform(value)
 
 
@@ -133,7 +139,7 @@ def set_wavetone_osc2_phase_distortion(value: int):
     Default: 50
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc2_phase_distortion(value)
 
 
@@ -147,7 +153,7 @@ def set_wavetone_osc2_level(value: int):
     Default: 100
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc2_level(value)
 
 
@@ -161,7 +167,7 @@ def set_wavetone_osc2_offset(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc2_offset(value)
 
 
@@ -175,7 +181,7 @@ def set_wavetone_osc2_table(value: int):
     Default: "prim"
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_osc2_table(value)
 
 
@@ -188,9 +194,9 @@ def set_wavetone_mod_type(value: int):
     Display options: "off" (0), "ring mod" (1), "ring mod fixed" (2), "hard sync" (3)
     Default: "off"
     """
-    return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
-    ).set_mod_type(value)
+    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_mod_type(
+        value
+    )
 
 
 @mcp.tool()
@@ -203,7 +209,7 @@ def set_wavetone_reset_mode(value: int):
     Default: "on"
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_reset_mode(value)
 
 
@@ -216,9 +222,9 @@ def set_wavetone_drift(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
-    ).set_drift(value)
+    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_drift(
+        value
+    )
 
 
 @mcp.tool()
@@ -230,9 +236,9 @@ def set_wavetone_attack(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
-    ).set_attack(value)
+    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_attack(
+        value
+    )
 
 
 @mcp.tool()
@@ -244,9 +250,9 @@ def set_wavetone_hold(value: int):
     Display range: 0 to 127
     Default: 127
     """
-    return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
-    ).set_hold(value)
+    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_hold(
+        value
+    )
 
 
 @mcp.tool()
@@ -258,9 +264,9 @@ def set_wavetone_decay(value: int):
     Display range: 0 to 127
     Default: 127
     """
-    return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
-    ).set_decay(value)
+    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_decay(
+        value
+    )
 
 
 @mcp.tool()
@@ -273,7 +279,7 @@ def set_wavetone_noise_level(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_noise_level(value)
 
 
@@ -287,7 +293,7 @@ def set_wavetone_noise_base(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_noise_base(value)
 
 
@@ -301,7 +307,7 @@ def set_wavetone_noise_width(value: int):
     Default: 127
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_noise_width(value)
 
 
@@ -315,7 +321,7 @@ def set_wavetone_noise_type(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_noise_type(value)
 
 
@@ -329,7 +335,7 @@ def set_wavetone_noise_character(value: int):
     Default: 0
     """
     return wavetone_controller.WavetoneController(
-        digitone_config.wavetone.pages, midi, 1
+        wavetone_pages, midi, 1
     ).set_noise_character(value)
 
 
