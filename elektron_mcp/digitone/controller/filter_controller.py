@@ -21,9 +21,11 @@ class BaseFilterController(BaseSynthController):
         if param_name not in self.config:
             raise ValueError(f"Invalid parameter: {param_name}")
 
+        param = self.config[param_name]
+
         result = self.digitone_midi.send_cc(
             self.midi_channel,
-            self.config[param_name]["midi"]["cc_msb"],
+            int(param.midi.cc_msb),
             value,
         )
 

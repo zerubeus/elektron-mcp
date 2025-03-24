@@ -3,18 +3,20 @@ from fastmcp import FastMCP
 from elektron_mcp.digitone.controller import wavetone_controller
 from elektron_mcp.digitone.controller import filter_controller
 from elektron_mcp.digitone.controller import amp_fx_controller
+from elektron_mcp.digitone.controller.amp_fx_controller import (
+    AmpController,
+    FXController,
+)
+from elektron_mcp.digitone.controller.filter_controller import MultiModeFilterController
+from elektron_mcp.digitone.controller.wavetone_controller import WavetoneController
 from elektron_mcp.midi.digitone_midi import DigitoneMIDI
-from elektron_mcp.digitone.config import digitone_config
-from elektron_mcp.digitone.constants.wavetone import WAVETONE_PARAMS
-from elektron_mcp.digitone.utils.parameter_utils import create_parameter_group
+from elektron_mcp.digitone.config.digitone_config import digitone_config
 
 
 mcp = FastMCP("Digitone 2")
 midi = DigitoneMIDI()
 
-wavetone_pages = {
-    page: create_parameter_group(params) for page, params in WAVETONE_PARAMS.items()
-}
+wavetone_pages = digitone_config.wavetone.pages
 
 
 @mcp.tool()
@@ -26,9 +28,7 @@ def set_wavetone_osc1_pitch(value: int):
     Display range: -60 to +60
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc1_pitch(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc1_pitch(value)
 
 
 @mcp.tool()
@@ -40,9 +40,7 @@ def set_wavetone_osc1_waveform(value: int):
     Display range: 0 to 120
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc1_waveform(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc1_waveform(value)
 
 
 @mcp.tool()
@@ -54,9 +52,7 @@ def set_wavetone_osc1_phase_distortion(value: int):
     Display range: 0 to 100
     Default: 50
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc1_phase_distortion(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc1_phase_distortion(value)
 
 
 @mcp.tool()
@@ -68,9 +64,7 @@ def set_wavetone_osc1_level(value: int):
     Display range: 0 to 127
     Default: 100
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc1_level(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc1_level(value)
 
 
 @mcp.tool()
@@ -82,9 +76,7 @@ def set_wavetone_osc1_offset(value: int):
     Display range: -10 to +10
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc1_offset(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc1_offset(value)
 
 
 @mcp.tool()
@@ -96,9 +88,7 @@ def set_wavetone_osc1_table(value: int):
     Display options: "prim" (0), "harm" (1)
     Default: "prim"
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc1_table(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc1_table(value)
 
 
 @mcp.tool()
@@ -110,9 +100,7 @@ def set_wavetone_osc2_pitch(value: int):
     Display range: -60 to +60
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc2_pitch(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc2_pitch(value)
 
 
 @mcp.tool()
@@ -124,9 +112,7 @@ def set_wavetone_osc2_waveform(value: int):
     Display range: 0 to 120
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc2_waveform(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc2_waveform(value)
 
 
 @mcp.tool()
@@ -138,9 +124,7 @@ def set_wavetone_osc2_phase_distortion(value: int):
     Display range: 0 to 100
     Default: 50
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc2_phase_distortion(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc2_phase_distortion(value)
 
 
 @mcp.tool()
@@ -152,9 +136,7 @@ def set_wavetone_osc2_level(value: int):
     Display range: 0 to 127
     Default: 100
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc2_level(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc2_level(value)
 
 
 @mcp.tool()
@@ -166,9 +148,7 @@ def set_wavetone_osc2_offset(value: int):
     Display range: -10 to +10
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc2_offset(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc2_offset(value)
 
 
 @mcp.tool()
@@ -180,9 +160,7 @@ def set_wavetone_osc2_table(value: int):
     Display options: "prim" (0), "harm" (1)
     Default: "prim"
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_osc2_table(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_osc2_table(value)
 
 
 @mcp.tool()
@@ -194,9 +172,7 @@ def set_wavetone_mod_type(value: int):
     Display options: "off" (0), "ring mod" (1), "ring mod fixed" (2), "hard sync" (3)
     Default: "off"
     """
-    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_mod_type(
-        value
-    )
+    return WavetoneController(wavetone_pages, midi, 1).set_mod_type(value)
 
 
 @mcp.tool()
@@ -208,9 +184,7 @@ def set_wavetone_reset_mode(value: int):
     Display options: "off" (0), "on" (1), "random" (2)
     Default: "on"
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_reset_mode(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_reset_mode(value)
 
 
 @mcp.tool()
@@ -222,9 +196,7 @@ def set_wavetone_drift(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_drift(
-        value
-    )
+    return WavetoneController(wavetone_pages, midi, 1).set_drift(value)
 
 
 @mcp.tool()
@@ -236,9 +208,7 @@ def set_wavetone_attack(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_attack(
-        value
-    )
+    return WavetoneController(wavetone_pages, midi, 1).set_attack(value)
 
 
 @mcp.tool()
@@ -250,9 +220,7 @@ def set_wavetone_hold(value: int):
     Display range: 0 to 127
     Default: 127
     """
-    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_hold(
-        value
-    )
+    return WavetoneController(wavetone_pages, midi, 1).set_hold(value)
 
 
 @mcp.tool()
@@ -264,9 +232,7 @@ def set_wavetone_decay(value: int):
     Display range: 0 to 127
     Default: 127
     """
-    return wavetone_controller.WavetoneController(wavetone_pages, midi, 1).set_decay(
-        value
-    )
+    return WavetoneController(wavetone_pages, midi, 1).set_decay(value)
 
 
 @mcp.tool()
@@ -278,9 +244,7 @@ def set_wavetone_noise_level(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_noise_level(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_noise_level(value)
 
 
 @mcp.tool()
@@ -292,9 +256,7 @@ def set_wavetone_noise_base(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_noise_base(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_noise_base(value)
 
 
 @mcp.tool()
@@ -306,9 +268,7 @@ def set_wavetone_noise_width(value: int):
     Display range: 0 to 127
     Default: 127
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_noise_width(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_noise_width(value)
 
 
 @mcp.tool()
@@ -320,9 +280,7 @@ def set_wavetone_noise_type(value: int):
     Display options: "grain noise" (0), "tuned noise" (1), "sample and hold noise" (2)
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_noise_type(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_noise_type(value)
 
 
 @mcp.tool()
@@ -334,9 +292,7 @@ def set_wavetone_noise_character(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return wavetone_controller.WavetoneController(
-        wavetone_pages, midi, 1
-    ).set_noise_character(value)
+    return WavetoneController(wavetone_pages, midi, 1).set_noise_character(value)
 
 
 # Multi Mode Filter tools
@@ -348,7 +304,7 @@ def set_multimode_filter_attack(value: int):
     Value range for midi: 0 to 127
     Display range: 0 to 127
     """
-    return filter_controller.MultiModeFilterController(
+    return MultiModeFilterController(
         digitone_config.multi_mode_filter.parameters, midi, 1
     ).set_attack(value)
 
@@ -362,7 +318,7 @@ def set_multimode_filter_decay(value: int):
     Display range: 0 to 127
     Default: 64
     """
-    return filter_controller.MultiModeFilterController(
+    return MultiModeFilterController(
         digitone_config.multi_mode_filter.parameters, midi, 1
     ).set_decay(value)
 
@@ -375,7 +331,7 @@ def set_multimode_filter_sustain(value: int):
     Value range for midi: 0 to 127
     Display range: 0 to 127
     """
-    return filter_controller.MultiModeFilterController(
+    return MultiModeFilterController(
         digitone_config.multi_mode_filter.parameters, midi, 1
     ).set_sustain(value)
 
@@ -389,7 +345,7 @@ def set_multimode_filter_release(value: int):
     Display range: 0 to 127
     Default: 64
     """
-    return filter_controller.MultiModeFilterController(
+    return MultiModeFilterController(
         digitone_config.multi_mode_filter.parameters, midi, 1
     ).set_release(value)
 
@@ -403,7 +359,7 @@ def set_multimode_filter_frequency(value: int):
     Display range: 0 to 127
     Default: 127
     """
-    return filter_controller.MultiModeFilterController(
+    return MultiModeFilterController(
         digitone_config.multi_mode_filter.parameters, midi, 1
     ).set_frequency(value)
 
@@ -416,7 +372,7 @@ def set_multimode_filter_resonance(value: int):
     Value range for midi: 0 to 127
     Display range: 0 to 127
     """
-    return filter_controller.MultiModeFilterController(
+    return MultiModeFilterController(
         digitone_config.multi_mode_filter.parameters, midi, 1
     ).set_resonance(value)
 
@@ -429,7 +385,7 @@ def set_multimode_filter_type(value: int):
     Value range for midi: 0 to 127
     Display options: Various filter types (LP2, LP4, BP2, BP4, HP2, HP4, etc.)
     """
-    return filter_controller.MultiModeFilterController(
+    return MultiModeFilterController(
         digitone_config.multi_mode_filter.parameters, midi, 1
     ).set_type(value)
 
@@ -442,7 +398,7 @@ def set_multimode_filter_envelope_depth(value: int):
     Value range for midi: 0 to 127
     Display range: -64 to +64
     """
-    return filter_controller.MultiModeFilterController(
+    return MultiModeFilterController(
         digitone_config.multi_mode_filter.parameters, midi, 1
     ).set_envelope_depth(value)
 
@@ -457,9 +413,7 @@ def set_amp_attack(value: int):
     Display range: 0 to 127
     Default: 8
     """
-    return amp_fx_controller.AmpController(
-        digitone_config.amp_page.parameters, midi, 1
-    ).set_attack(value)
+    return AmpController(digitone_config.amp_page.parameters, midi, 1).set_attack(value)
 
 
 @mcp.tool()
@@ -471,9 +425,7 @@ def set_amp_hold(value: int):
     Display range: 0 to 127
     Default: 127
     """
-    return amp_fx_controller.AmpController(
-        digitone_config.amp_page.parameters, midi, 1
-    ).set_hold(value)
+    return AmpController(digitone_config.amp_page.parameters, midi, 1).set_hold(value)
 
 
 @mcp.tool()
@@ -485,9 +437,7 @@ def set_amp_decay(value: int):
     Display range: 0 to 127
     Default: 32
     """
-    return amp_fx_controller.AmpController(
-        digitone_config.amp_page.parameters, midi, 1
-    ).set_decay(value)
+    return AmpController(digitone_config.amp_page.parameters, midi, 1).set_decay(value)
 
 
 @mcp.tool()
@@ -499,9 +449,9 @@ def set_amp_sustain(value: int):
     Display range: 0 to 127
     Default: 96
     """
-    return amp_fx_controller.AmpController(
-        digitone_config.amp_page.parameters, midi, 1
-    ).set_sustain(value)
+    return AmpController(digitone_config.amp_page.parameters, midi, 1).set_sustain(
+        value
+    )
 
 
 @mcp.tool()
@@ -513,9 +463,9 @@ def set_amp_release(value: int):
     Display range: 0 to 127
     Default: 24
     """
-    return amp_fx_controller.AmpController(
-        digitone_config.amp_page.parameters, midi, 1
-    ).set_release(value)
+    return AmpController(digitone_config.amp_page.parameters, midi, 1).set_release(
+        value
+    )
 
 
 @mcp.tool()
@@ -527,7 +477,7 @@ def set_amp_envelope_reset(value: int):
     Display options: "off" (0), "on" (1)
     Default: "on"
     """
-    return amp_fx_controller.AmpController(
+    return AmpController(
         digitone_config.amp_page.parameters, midi, 1
     ).set_envelope_reset(value)
 
@@ -541,7 +491,7 @@ def set_amp_envelope_mode(value: int):
     Display options: "AHD" (0), "ADSR" (1)
     Default: "ADSR"
     """
-    return amp_fx_controller.AmpController(
+    return AmpController(
         digitone_config.amp_page.parameters, midi, 1
     ).set_envelope_mode(value)
 
@@ -555,9 +505,7 @@ def set_amp_pan(value: int):
     Display range: -64 to +64
     Default: 0 (center)
     """
-    return amp_fx_controller.AmpController(
-        digitone_config.amp_page.parameters, midi, 1
-    ).set_pan(value)
+    return AmpController(digitone_config.amp_page.parameters, midi, 1).set_pan(value)
 
 
 @mcp.tool()
@@ -569,9 +517,7 @@ def set_amp_volume(value: int):
     Display range: 0 to 127
     Default: 110
     """
-    return amp_fx_controller.AmpController(
-        digitone_config.amp_page.parameters, midi, 1
-    ).set_volume(value)
+    return AmpController(digitone_config.amp_page.parameters, midi, 1).set_volume(value)
 
 
 # FX tools
@@ -584,9 +530,9 @@ def set_fx_bit_reduction(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return amp_fx_controller.FXController(
-        digitone_config.fx_page.parameters, midi, 1
-    ).set_bit_reduction(value)
+    return FXController(digitone_config.fx_page.parameters, midi, 1).set_bit_reduction(
+        value
+    )
 
 
 @mcp.tool()
@@ -598,9 +544,9 @@ def set_fx_overdrive(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return amp_fx_controller.FXController(
-        digitone_config.fx_page.parameters, midi, 1
-    ).set_overdrive(value)
+    return FXController(digitone_config.fx_page.parameters, midi, 1).set_overdrive(
+        value
+    )
 
 
 @mcp.tool()
@@ -612,7 +558,7 @@ def set_fx_sample_rate_reduction(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return amp_fx_controller.FXController(
+    return FXController(
         digitone_config.fx_page.parameters, midi, 1
     ).set_sample_rate_reduction(value)
 
@@ -626,7 +572,7 @@ def set_fx_sample_rate_routing(value: int):
     Display options: "pre" (0), "post" (1)
     Default: "pre"
     """
-    return amp_fx_controller.FXController(
+    return FXController(
         digitone_config.fx_page.parameters, midi, 1
     ).set_sample_rate_routing(value)
 
@@ -640,7 +586,7 @@ def set_fx_overdrive_routing(value: int):
     Display options: "pre" (0), "post" (1)
     Default: "pre"
     """
-    return amp_fx_controller.FXController(
+    return FXController(
         digitone_config.fx_page.parameters, midi, 1
     ).set_overdrive_routing(value)
 
@@ -654,9 +600,7 @@ def set_fx_delay(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return amp_fx_controller.FXController(
-        digitone_config.fx_page.parameters, midi, 1
-    ).set_delay(value)
+    return FXController(digitone_config.fx_page.parameters, midi, 1).set_delay(value)
 
 
 @mcp.tool()
@@ -668,9 +612,7 @@ def set_fx_reverb(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return amp_fx_controller.FXController(
-        digitone_config.fx_page.parameters, midi, 1
-    ).set_reverb(value)
+    return FXController(digitone_config.fx_page.parameters, midi, 1).set_reverb(value)
 
 
 @mcp.tool()
@@ -682,6 +624,4 @@ def set_fx_chorus(value: int):
     Display range: 0 to 127
     Default: 0
     """
-    return amp_fx_controller.FXController(
-        digitone_config.fx_page.parameters, midi, 1
-    ).set_chorus(value)
+    return FXController(digitone_config.fx_page.parameters, midi, 1).set_chorus(value)

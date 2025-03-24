@@ -33,12 +33,17 @@ class BaseSynthController:
         if page not in self.config:
             raise ValueError(f"Invalid page: {page}")
 
-        if param_name not in self.config[page]:
+        if param_name not in self.config[page].parameters:
             raise ValueError(f"Invalid parameter: {param_name} on {page}")
+
+        param = self.config[page].parameters[param_name]
+
+        # Convert cc_msb to int before sending
+        cc_msb = int(param.midi.cc_msb)
 
         result = self.digitone_midi.send_cc(
             self.midi_channel,
-            self.config[page][param_name]["midi"]["cc_msb"],
+            cc_msb,
             value,
         )
 
