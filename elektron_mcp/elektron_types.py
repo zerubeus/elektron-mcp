@@ -232,6 +232,24 @@ def create_parameter_group(params_dict):
     return ParameterGroup(parameters=parameters)
 
 
+def setup_filter_parameters(filter_obj, params_dict):
+    """Helper function to set up filter parameters to avoid code duplication"""
+    filter_obj.parameters = {
+        name: create_parameter(
+            cc_msb=str(param.get("cc_msb", param.get("cc"))),
+            nrpn_lsb="1",
+            nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
+            max_midi=param.get("max_midi", 127),
+            min_midi=param.get("min_midi", 0),
+            max_val=param.get("max_val", 127),
+            min_val=param.get("min_val", 0),
+            default=param.get("default", 0),
+            options=param.get("options", None),
+        )
+        for name, param in params_dict.items()
+    }
+
+
 # Create the elektron configuration
 elektron_config = ElektronConfig()
 
@@ -262,112 +280,15 @@ elektron_config.wavetone.pages = {
     page: create_parameter_group(params) for page, params in WAVETONE_PARAMS.items()
 }
 
+
 # Set up filter parameters
-elektron_config.multi_mode_filter.parameters = {
-    name: create_parameter(
-        cc_msb=str(param.get("cc_msb", param.get("cc"))),
-        nrpn_lsb="1",
-        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
-        max_midi=param.get("max_midi", 127),
-        min_midi=param.get("min_midi", 0),
-        max_val=param.get("max_val", 127),
-        min_val=param.get("min_val", 0),
-        default=param.get("default", 0),
-        options=param.get("options", None),
-    )
-    for name, param in MULTI_MODE_FILTER_PARAMS.items()
-}
-
-# Set up other filter parameters
-elektron_config.lowpass_4_filter.parameters = {
-    name: create_parameter(
-        cc_msb=str(param.get("cc_msb", param.get("cc"))),
-        nrpn_lsb="1",
-        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
-        max_midi=param.get("max_midi", 127),
-        min_midi=param.get("min_midi", 0),
-        max_val=param.get("max_val", 127),
-        min_val=param.get("min_val", 0),
-        default=param.get("default", 0),
-        options=param.get("options", None),
-    )
-    for name, param in LOWPASS_4_FILTER_PARAMS.items()
-}
-
-elektron_config.legacy_lp_hp_filter.parameters = {
-    name: create_parameter(
-        cc_msb=str(param.get("cc_msb", param.get("cc"))),
-        nrpn_lsb="1",
-        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
-        max_midi=param.get("max_midi", 127),
-        min_midi=param.get("min_midi", 0),
-        max_val=param.get("max_val", 127),
-        min_val=param.get("min_val", 0),
-        default=param.get("default", 0),
-        options=param.get("options", None),
-    )
-    for name, param in LEGACY_LP_HP_FILTER_PARAMS.items()
-}
-
-elektron_config.comb_minus_filter.parameters = {
-    name: create_parameter(
-        cc_msb=str(param.get("cc_msb", param.get("cc"))),
-        nrpn_lsb="1",
-        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
-        max_midi=param.get("max_midi", 127),
-        min_midi=param.get("min_midi", 0),
-        max_val=param.get("max_val", 127),
-        min_val=param.get("min_val", 0),
-        default=param.get("default", 0),
-        options=param.get("options", None),
-    )
-    for name, param in COMB_MINUS_FILTER_PARAMS.items()
-}
-
-elektron_config.comb_plus_filter.parameters = {
-    name: create_parameter(
-        cc_msb=str(param.get("cc_msb", param.get("cc"))),
-        nrpn_lsb="1",
-        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
-        max_midi=param.get("max_midi", 127),
-        min_midi=param.get("min_midi", 0),
-        max_val=param.get("max_val", 127),
-        min_val=param.get("min_val", 0),
-        default=param.get("default", 0),
-        options=param.get("options", None),
-    )
-    for name, param in COMB_PLUS_FILTER_PARAMS.items()
-}
-
-elektron_config.equalizer_filter.parameters = {
-    name: create_parameter(
-        cc_msb=str(param.get("cc_msb", param.get("cc"))),
-        nrpn_lsb="1",
-        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
-        max_midi=param.get("max_midi", 127),
-        min_midi=param.get("min_midi", 0),
-        max_val=param.get("max_val", 127),
-        min_val=param.get("min_val", 0),
-        default=param.get("default", 0),
-        options=param.get("options", None),
-    )
-    for name, param in EQUALIZER_FILTER_PARAMS.items()
-}
-
-elektron_config.base_width_filter.parameters = {
-    name: create_parameter(
-        cc_msb=str(param.get("cc_msb", param.get("cc"))),
-        nrpn_lsb="1",
-        nrpn_msb=str(param.get("nrpn_msb", param.get("nrpn"))),
-        max_midi=param.get("max_midi", 127),
-        min_midi=param.get("min_midi", 0),
-        max_val=param.get("max_val", 127),
-        min_val=param.get("min_val", 0),
-        default=param.get("default", 0),
-        options=param.get("options", None),
-    )
-    for name, param in BASE_WIDTH_FILTER_PARAMS.items()
-}
+setup_filter_parameters(elektron_config.multi_mode_filter, MULTI_MODE_FILTER_PARAMS)
+setup_filter_parameters(elektron_config.lowpass_4_filter, LOWPASS_4_FILTER_PARAMS)
+setup_filter_parameters(elektron_config.legacy_lp_hp_filter, LEGACY_LP_HP_FILTER_PARAMS)
+setup_filter_parameters(elektron_config.comb_minus_filter, COMB_MINUS_FILTER_PARAMS)
+setup_filter_parameters(elektron_config.comb_plus_filter, COMB_PLUS_FILTER_PARAMS)
+setup_filter_parameters(elektron_config.equalizer_filter, EQUALIZER_FILTER_PARAMS)
+setup_filter_parameters(elektron_config.base_width_filter, BASE_WIDTH_FILTER_PARAMS)
 
 # AMP page
 elektron_config.amp_page.parameters = {
