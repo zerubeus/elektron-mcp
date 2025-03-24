@@ -3,23 +3,6 @@ from elektron_mcp.elektron_types import (
 )
 
 
-# Original config dictionary
-elektron_fn_to_midi = {
-    "fmdrum": {
-        "page_1": {
-            "tune": {
-                "midi": {"cc_msb": "40", "nrpn_lsb": "1", "nrpn_msb": "73"},
-                "max_midi_value": 127,
-                "min_midi_value": 0,
-                "max_value": 60,
-                "min_value": -60,
-                "default_value": 0,
-            },
-        }
-    }
-}
-
-
 def test_config_structure():
     """Test that all expected synth types are present"""
     expected_synths = ["fmdrum", "fmtone", "swarmer", "wavetone"]

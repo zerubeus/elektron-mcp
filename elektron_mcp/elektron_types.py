@@ -12,6 +12,8 @@ from elektron_mcp.constants.filters import (
 )
 from elektron_mcp.constants.fm_drum import FM_DRUM_PARAMS
 from elektron_mcp.constants.fm_tone import FM_TONE_PARAMS
+from elektron_mcp.constants.swarmer import SWARMER_PARAMS
+from elektron_mcp.constants.wavetone import WAVETONE_PARAMS
 from elektron_mcp.constants.lfo import LFO1_PARAMS, LFO2_PARAMS, LFO3_PARAMS
 
 
@@ -248,6 +250,16 @@ elektron_config.fmdrum.pages = {
 # Set up FMTONE parameters
 elektron_config.fmtone.pages = {
     page: create_parameter_group(params) for page, params in FM_TONE_PARAMS.items()
+}
+
+# Set up SWARMER parameters
+elektron_config.swarmer.pages = {
+    page: create_parameter_group(params) for page, params in SWARMER_PARAMS.items()
+}
+
+# Set up WAVETONE parameters
+elektron_config.wavetone.pages = {
+    page: create_parameter_group(params) for page, params in WAVETONE_PARAMS.items()
 }
 
 # Set up filter parameters
