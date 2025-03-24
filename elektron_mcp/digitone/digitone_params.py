@@ -1,7 +1,7 @@
 from typing import Dict, List, Union, Optional
 from pydantic import BaseModel, Field, model_validator
 
-from elektron_mcp.constants.filters import (
+from .constants.filters import (
     MULTI_MODE_FILTER_PARAMS,
     LOWPASS_4_FILTER_PARAMS,
     LEGACY_LP_HP_FILTER_PARAMS,
@@ -10,11 +10,12 @@ from elektron_mcp.constants.filters import (
     EQUALIZER_FILTER_PARAMS,
     BASE_WIDTH_FILTER_PARAMS,
 )
-from elektron_mcp.constants.fm_drum import FM_DRUM_PARAMS
-from elektron_mcp.constants.fm_tone import FM_TONE_PARAMS
-from elektron_mcp.constants.swarmer import SWARMER_PARAMS
-from elektron_mcp.constants.wavetone import WAVETONE_PARAMS
-from elektron_mcp.constants.lfo import LFO1_PARAMS, LFO2_PARAMS, LFO3_PARAMS
+
+from .constants.fm_drum import FM_DRUM_PARAMS
+from .constants.fm_tone import FM_TONE_PARAMS
+from .constants.swarmer import SWARMER_PARAMS
+from .constants.wavetone import WAVETONE_PARAMS
+from .constants.lfo import LFO1_PARAMS, LFO2_PARAMS, LFO3_PARAMS
 
 
 class MidiMapping(BaseModel):
@@ -23,7 +24,7 @@ class MidiMapping(BaseModel):
     nrpn_msb: str
 
 
-class ElektronParams(BaseModel):
+class DigitoneParams(BaseModel):
     midi: MidiMapping
     max_midi_value: int
     min_midi_value: int
@@ -82,7 +83,7 @@ class ElektronParams(BaseModel):
 class ParameterGroup(BaseModel):
     """Represents a group of parameters, like page_1, page_2, etc."""
 
-    parameters: Dict[str, Union[ElektronParams, Dict[str, ElektronParams]]] = Field(
+    parameters: Dict[str, Union[DigitoneParams, Dict[str, DigitoneParams]]] = Field(
         default_factory=dict
     )
 
@@ -96,28 +97,28 @@ class SynthParameters(BaseModel):
 class FilterParameters(BaseModel):
     """Represents filter parameters"""
 
-    parameters: Dict[str, ElektronParams] = Field(default_factory=dict)
+    parameters: Dict[str, DigitoneParams] = Field(default_factory=dict)
 
 
 class LfoParameters(BaseModel):
     """Represents LFO parameters"""
 
-    lfo_groups: Dict[str, Dict[str, ElektronParams]] = Field(default_factory=dict)
+    lfo_groups: Dict[str, Dict[str, DigitoneParams]] = Field(default_factory=dict)
 
 
 class AmpParameters(BaseModel):
     """Represents amp parameters"""
 
-    parameters: Dict[str, ElektronParams] = Field(default_factory=dict)
+    parameters: Dict[str, DigitoneParams] = Field(default_factory=dict)
 
 
 class FxParameters(BaseModel):
     """Represents fx parameters"""
 
-    parameters: Dict[str, ElektronParams] = Field(default_factory=dict)
+    parameters: Dict[str, DigitoneParams] = Field(default_factory=dict)
 
 
-class ElektronConfig(BaseModel):
+class DigitoneConfig(BaseModel):
     """Top level configuration for Elektron synths"""
 
     fmdrum: SynthParameters = Field(default_factory=SynthParameters)
@@ -140,7 +141,7 @@ class ElektronConfig(BaseModel):
         return super().model_dump_json(**kwargs)
 
     @classmethod
-    def model_validate_json(cls, json_data: str, **kwargs) -> "ElektronConfig":
+    def model_validate_json(cls, json_data: str, **kwargs):
         """Deserialize from JSON"""
         return super().model_validate_json(json_data, **kwargs)
 
@@ -165,7 +166,7 @@ def create_parameter(
     mapping = MidiMapping(
         cc_msb=cc_msb_str, nrpn_lsb=nrpn_lsb_str, nrpn_msb=nrpn_msb_str
     )
-    return ElektronParams(
+    return DigitoneParams(
         midi=mapping,
         max_midi_value=max_midi,
         min_midi_value=min_midi,
@@ -251,47 +252,47 @@ def setup_filter_parameters(filter_obj, params_dict):
 
 
 # Create the elektron configuration
-elektron_config = ElektronConfig()
+digitone_config = DigitoneConfig()
 
 # Set up LFO groups
-elektron_config.lfo.lfo_groups = {
+digitone_config.lfo.lfo_groups = {
     "lfo_1": create_lfo_params(LFO1_PARAMS),
     "lfo_2": create_lfo_params(LFO2_PARAMS),
     "lfo_3": create_lfo_params(LFO3_PARAMS),
 }
 
 # Set up FMDRUM parameters
-elektron_config.fmdrum.pages = {
+digitone_config.fmdrum.pages = {
     page: create_parameter_group(params) for page, params in FM_DRUM_PARAMS.items()
 }
 
 # Set up FMTONE parameters
-elektron_config.fmtone.pages = {
+digitone_config.fmtone.pages = {
     page: create_parameter_group(params) for page, params in FM_TONE_PARAMS.items()
 }
 
 # Set up SWARMER parameters
-elektron_config.swarmer.pages = {
+digitone_config.swarmer.pages = {
     page: create_parameter_group(params) for page, params in SWARMER_PARAMS.items()
 }
 
 # Set up WAVETONE parameters
-elektron_config.wavetone.pages = {
+digitone_config.wavetone.pages = {
     page: create_parameter_group(params) for page, params in WAVETONE_PARAMS.items()
 }
 
 
 # Set up filter parameters
-setup_filter_parameters(elektron_config.multi_mode_filter, MULTI_MODE_FILTER_PARAMS)
-setup_filter_parameters(elektron_config.lowpass_4_filter, LOWPASS_4_FILTER_PARAMS)
-setup_filter_parameters(elektron_config.legacy_lp_hp_filter, LEGACY_LP_HP_FILTER_PARAMS)
-setup_filter_parameters(elektron_config.comb_minus_filter, COMB_MINUS_FILTER_PARAMS)
-setup_filter_parameters(elektron_config.comb_plus_filter, COMB_PLUS_FILTER_PARAMS)
-setup_filter_parameters(elektron_config.equalizer_filter, EQUALIZER_FILTER_PARAMS)
-setup_filter_parameters(elektron_config.base_width_filter, BASE_WIDTH_FILTER_PARAMS)
+setup_filter_parameters(digitone_config.multi_mode_filter, MULTI_MODE_FILTER_PARAMS)
+setup_filter_parameters(digitone_config.lowpass_4_filter, LOWPASS_4_FILTER_PARAMS)
+setup_filter_parameters(digitone_config.legacy_lp_hp_filter, LEGACY_LP_HP_FILTER_PARAMS)
+setup_filter_parameters(digitone_config.comb_minus_filter, COMB_MINUS_FILTER_PARAMS)
+setup_filter_parameters(digitone_config.comb_plus_filter, COMB_PLUS_FILTER_PARAMS)
+setup_filter_parameters(digitone_config.equalizer_filter, EQUALIZER_FILTER_PARAMS)
+setup_filter_parameters(digitone_config.base_width_filter, BASE_WIDTH_FILTER_PARAMS)
 
 # AMP page
-elektron_config.amp_page.parameters = {
+digitone_config.amp_page.parameters = {
     "ATK": create_parameter("84", "1", "30", 127, 0, 127, 0, 8),
     "HOLD": create_parameter("85", "1", "31", 127, 0, 127, 0, 127),
     "DEC": create_parameter("86", "1", "32", 127, 0, 127, 0, 32),
@@ -304,7 +305,7 @@ elektron_config.amp_page.parameters = {
 }
 
 # FX page
-elektron_config.fx_page.parameters = {
+digitone_config.fx_page.parameters = {
     "BR": create_parameter("78", "1", "5", 127, 0, 127, 0, 0),
     "OVER": create_parameter("81", "1", "8", 127, 0, 127, 0, 0),
     "SRR": create_parameter("79", "1", "6", 127, 0, 127, 0, 0),

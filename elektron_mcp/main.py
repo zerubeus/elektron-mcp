@@ -1,9 +1,9 @@
-from .elektron_params import elektron_config
+from .digitone_params import elektron_config
 
 
 def main():
     print("Hello from elektron-mcp!")
-    # Example usage of elektron_config
+    # Example usage of digitone_config
     print(f"Number of synth types: {len(elektron_config.__dict__)}")
 
     # Serialize config to JSON and print it

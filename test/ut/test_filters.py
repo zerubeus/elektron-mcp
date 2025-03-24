@@ -1,4 +1,4 @@
-from elektron_mcp.elektron_params import elektron_config
+from elektron_mcp.digitone.digitone_params import digitone_config
 
 
 def test_multi_mode_filter():
@@ -71,7 +71,7 @@ def test_multi_mode_filter():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.multi_mode_filter.parameters
+    actual_params = digitone_config.multi_mode_filter.parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -172,7 +172,7 @@ def test_lowpass_4_filter():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.lowpass_4_filter.parameters
+    actual_params = digitone_config.lowpass_4_filter.parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -282,7 +282,7 @@ def test_legacy_lp_hp_filter():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.legacy_lp_hp_filter.parameters
+    actual_params = digitone_config.legacy_lp_hp_filter.parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -395,7 +395,7 @@ def test_comb_minus_filter():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.comb_minus_filter.parameters
+    actual_params = digitone_config.comb_minus_filter.parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -504,7 +504,7 @@ def test_comb_plus_filter():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.comb_plus_filter.parameters
+    actual_params = digitone_config.comb_plus_filter.parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -613,7 +613,7 @@ def test_equalizer_filter():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.equalizer_filter.parameters
+    actual_params = digitone_config.equalizer_filter.parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -699,7 +699,7 @@ def test_base_width_filter():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.base_width_filter.parameters
+    actual_params = digitone_config.base_width_filter.parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():

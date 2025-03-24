@@ -1,4 +1,4 @@
-from elektron_mcp.elektron_params import elektron_config
+from elektron_mcp.digitone.digitone_params import digitone_config
 
 
 def test_fmdrum_page1_all_params():
@@ -71,7 +71,7 @@ def test_fmdrum_page1_all_params():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.fmdrum.pages["page_1"].parameters
+    actual_params = digitone_config.fmdrum.pages["page_1"].parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -188,7 +188,7 @@ def test_fmdrum_page2_all_params():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.fmdrum.pages["page_2"].parameters
+    actual_params = digitone_config.fmdrum.pages["page_2"].parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -287,7 +287,7 @@ def test_fmdrum_page3_all_params():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.fmdrum.pages["page_3"].parameters
+    actual_params = digitone_config.fmdrum.pages["page_3"].parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -404,7 +404,7 @@ def test_fmdrum_page4_all_params():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.fmdrum.pages["page_4"].parameters
+    actual_params = digitone_config.fmdrum.pages["page_4"].parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():

@@ -1,4 +1,4 @@
-from elektron_mcp.elektron_params import elektron_config
+from elektron_mcp.digitone.digitone_params import digitone_config
 
 
 def test_lfo1_all_params():
@@ -121,7 +121,7 @@ def test_lfo1_all_params():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.lfo.lfo_groups["lfo_1"]
+    actual_params = digitone_config.lfo.lfo_groups["lfo_1"]
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -291,7 +291,7 @@ def test_lfo2_all_params():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.lfo.lfo_groups["lfo_2"]
+    actual_params = digitone_config.lfo.lfo_groups["lfo_2"]
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():
@@ -468,7 +468,7 @@ def test_lfo3_all_params():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.lfo.lfo_groups["lfo_3"]
+    actual_params = digitone_config.lfo.lfo_groups["lfo_3"]
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():

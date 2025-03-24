@@ -1,4 +1,4 @@
-from elektron_mcp.elektron_params import elektron_config
+from elektron_mcp.digitone.digitone_params import digitone_config
 
 
 def test_fx_all_params():
@@ -79,7 +79,7 @@ def test_fx_all_params():
     }
 
     # Get all parameters from the config
-    actual_params = elektron_config.fx_page.parameters
+    actual_params = digitone_config.fx_page.parameters
 
     # Verify all expected parameters exist
     for param_name, expected_values in expected_params.items():

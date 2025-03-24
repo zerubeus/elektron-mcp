@@ -1,6 +1,4 @@
-from elektron_mcp.elektron_params import (
-    elektron_config,
-)
+from elektron_mcp.digitone.digitone_params import digitone_config
 
 
 def test_config_structure():
@@ -21,12 +19,12 @@ def test_config_structure():
 
     # Check all synths exist
     for synth in expected_synths:
-        assert hasattr(elektron_config, synth)
+        assert hasattr(digitone_config, synth)
 
     # Check all filters exist
     for filter_type in expected_filters:
-        assert hasattr(elektron_config, filter_type)
+        assert hasattr(digitone_config, filter_type)
 
     # Check other sections exist
     for other in expected_others:
-        assert hasattr(elektron_config, other)
+        assert hasattr(digitone_config, other)
