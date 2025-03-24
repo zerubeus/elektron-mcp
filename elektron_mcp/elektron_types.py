@@ -1,16 +1,14 @@
-from dataclasses import dataclass, field
 from typing import Dict, List, Union, Optional
+from pydantic import BaseModel, Field, model_validator
 
 
-@dataclass
-class MidiMapping:
+class MidiMapping(BaseModel):
     cc_msb: str
     nrpn_lsb: str
     nrpn_msb: str
 
 
-@dataclass
-class Parameter:
+class ElektronParams(BaseModel):
     midi: MidiMapping
     max_midi_value: int
     min_midi_value: int
@@ -19,69 +17,117 @@ class Parameter:
     default_value: Union[int, float, str, List[Union[int, float]]]
     options: Optional[List[str]] = None
 
+    @model_validator(mode="after")
+    def validate_values(self):
+        """Validate parameter values"""
+        # Check options
+        if self.options is not None and isinstance(self.default_value, str):
+            if self.default_value not in self.options:
+                raise ValueError(
+                    f"Default value '{self.default_value}' not in options list {self.options}"
+                )
 
-@dataclass
-class ParameterGroup:
+        # Check numeric range for numeric values (when not using options)
+        if self.options is None:
+            if (
+                isinstance(self.default_value, (int, float))
+                and isinstance(self.max_value, (int, float))
+                and isinstance(self.min_value, (int, float))
+            ):
+                if (
+                    self.default_value > self.max_value
+                    or self.default_value < self.min_value
+                ):
+                    raise ValueError(
+                        f"Default value {self.default_value} outside valid range [{self.min_value}, {self.max_value}]"
+                    )
+
+            # Check list values
+            if (
+                isinstance(self.default_value, list)
+                and isinstance(self.max_value, list)
+                and isinstance(self.min_value, list)
+            ):
+                if len(self.default_value) != len(self.max_value) or len(
+                    self.default_value
+                ) != len(self.min_value):
+                    raise ValueError(
+                        "Inconsistent length for default, min, and max value lists"
+                    )
+
+                for idx, val in enumerate(self.default_value):
+                    if val > self.max_value[idx] or val < self.min_value[idx]:
+                        raise ValueError(
+                            f"Default value at index {idx} outside valid range"
+                        )
+
+        return self
+
+
+class ParameterGroup(BaseModel):
     """Represents a group of parameters, like page_1, page_2, etc."""
 
-    parameters: Dict[str, Union[Parameter, Dict[str, Parameter]]] = field(
+    parameters: Dict[str, Union[ElektronParams, Dict[str, ElektronParams]]] = Field(
         default_factory=dict
     )
 
 
-@dataclass
-class SynthParameters:
+class SynthParameters(BaseModel):
     """Represents all parameters for a synth type (fmdrum, fmtone, etc.)"""
 
-    pages: Dict[str, ParameterGroup] = field(default_factory=dict)
+    pages: Dict[str, ParameterGroup] = Field(default_factory=dict)
 
 
-@dataclass
-class FilterParameters:
+class FilterParameters(BaseModel):
     """Represents filter parameters"""
 
-    parameters: Dict[str, Parameter] = field(default_factory=dict)
+    parameters: Dict[str, ElektronParams] = Field(default_factory=dict)
 
 
-@dataclass
-class LfoParameters:
+class LfoParameters(BaseModel):
     """Represents LFO parameters"""
 
-    lfo_groups: Dict[str, Dict[str, Parameter]] = field(default_factory=dict)
+    lfo_groups: Dict[str, Dict[str, ElektronParams]] = Field(default_factory=dict)
 
 
-@dataclass
-class AmpParameters:
+class AmpParameters(BaseModel):
     """Represents amp parameters"""
 
-    parameters: Dict[str, Parameter] = field(default_factory=dict)
+    parameters: Dict[str, ElektronParams] = Field(default_factory=dict)
 
 
-@dataclass
-class FxParameters:
+class FxParameters(BaseModel):
     """Represents fx parameters"""
 
-    parameters: Dict[str, Parameter] = field(default_factory=dict)
+    parameters: Dict[str, ElektronParams] = Field(default_factory=dict)
 
 
-@dataclass
-class ElektronConfig:
+class ElektronConfig(BaseModel):
     """Top level configuration for Elektron synths"""
 
-    fmdrum: SynthParameters = field(default_factory=SynthParameters)
-    fmtone: SynthParameters = field(default_factory=SynthParameters)
-    swarmer: SynthParameters = field(default_factory=SynthParameters)
-    wavetone: SynthParameters = field(default_factory=SynthParameters)
-    multi_mode_filter: FilterParameters = field(default_factory=FilterParameters)
-    lowpass_4_filter: FilterParameters = field(default_factory=FilterParameters)
-    legacy_lp_hp_filter: FilterParameters = field(default_factory=FilterParameters)
-    comb_minus_filter: FilterParameters = field(default_factory=FilterParameters)
-    comb_plus_filter: FilterParameters = field(default_factory=FilterParameters)
-    equalizer_filter: FilterParameters = field(default_factory=FilterParameters)
-    base_width_filter: FilterParameters = field(default_factory=FilterParameters)
-    amp_page: AmpParameters = field(default_factory=AmpParameters)
-    fx_page: FxParameters = field(default_factory=FxParameters)
-    lfo: LfoParameters = field(default_factory=LfoParameters)
+    fmdrum: SynthParameters = Field(default_factory=SynthParameters)
+    fmtone: SynthParameters = Field(default_factory=SynthParameters)
+    swarmer: SynthParameters = Field(default_factory=SynthParameters)
+    wavetone: SynthParameters = Field(default_factory=SynthParameters)
+    multi_mode_filter: FilterParameters = Field(default_factory=FilterParameters)
+    lowpass_4_filter: FilterParameters = Field(default_factory=FilterParameters)
+    legacy_lp_hp_filter: FilterParameters = Field(default_factory=FilterParameters)
+    comb_minus_filter: FilterParameters = Field(default_factory=FilterParameters)
+    comb_plus_filter: FilterParameters = Field(default_factory=FilterParameters)
+    equalizer_filter: FilterParameters = Field(default_factory=FilterParameters)
+    base_width_filter: FilterParameters = Field(default_factory=FilterParameters)
+    amp_page: AmpParameters = Field(default_factory=AmpParameters)
+    fx_page: FxParameters = Field(default_factory=FxParameters)
+    lfo: LfoParameters = Field(default_factory=LfoParameters)
+
+    def model_dump_json(self, **kwargs) -> str:
+        """Serialize to JSON"""
+        return super().model_dump_json(**kwargs)
+
+    @classmethod
+    def model_validate_json(cls, json_data: str, **kwargs) -> "ElektronConfig":
+        """Deserialize from JSON"""
+        return super().model_validate_json(json_data, **kwargs)
 
 
 def create_parameter(
@@ -95,7 +141,7 @@ def create_parameter(
     default,
     options=None,
 ):
-    return Parameter(
+    return ElektronParams(
         midi=MidiMapping(cc_msb=cc_msb, nrpn_lsb=nrpn_lsb, nrpn_msb=nrpn_msb),
         max_midi_value=max_midi,
         min_midi_value=min_midi,
@@ -163,7 +209,7 @@ elektron_config.fmdrum.pages = {
 elektron_config.fmtone.pages = {
     "page_1": ParameterGroup(
         parameters={
-            "ALGO": create_parameter("40", "1", "73", 7, 0, 8, 1, 0),
+            "ALGO": create_parameter("40", "1", "73", 7, 0, 8, 0, 0),
             "C": create_parameter("41", "1", "74", 18, 0, 16, 0.25, 1.00),
             "A": create_parameter("42", "1", "75", 35, 0, 16, 0.25, 1.00),
             "B": create_parameter(

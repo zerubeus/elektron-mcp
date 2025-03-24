@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 .idea
+.vscode
 *.egg-info
 
 # Virtual environments

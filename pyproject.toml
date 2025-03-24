@@ -4,9 +4,17 @@ version = "0.1.0"
 description = "MPC to control Elektron machines (Digitakt 2, Digitone 2)"
 readme = "README.md"
 requires-python = ">=3.12"
+
 dependencies = [
     "black>=25.1.0",
     "fastmcp>=0.4.1",
     "pydantic>=2.10.6",
     "pydantic-ai-slim[mcp]>=0.0.43",
 ]
+
+[dependency-groups]
+dev = ["colorlog>=6.9.0", "pytest>=8.3.5"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
