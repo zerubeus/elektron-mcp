@@ -189,7 +189,6 @@ This library uses:
 - **FastMCP**: For exposing synth controls to LLMs
 - **Pydantic models**: For data validation, serialization, and type safety
 - **mido**: For MIDI communication
-- **Object-oriented design**: For maintainable, extensible code
 
 ## Use Cases
 
