@@ -1,8 +1,5 @@
-from fastmcp import FastMCP
+from mcp.server.fastmcp import FastMCP
 
-from elektron_mcp.digitone.controller import wavetone_controller
-from elektron_mcp.digitone.controller import filter_controller
-from elektron_mcp.digitone.controller import amp_fx_controller
 from elektron_mcp.digitone.controller.amp_fx_controller import (
     AmpController,
     FXController,
