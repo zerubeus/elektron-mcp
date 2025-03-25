@@ -18,6 +18,12 @@ A Model Context Protocol (MCP) server that allows Claude and other MCP-compatibl
 - Type-safe parameter validation using Pydantic
 - Modular architecture for easy extension to other Elektron devices
 
+## Demo
+
+Watch Claude control the Elektron Digitone synthesizer in real-time:
+
+[![Claude controlling Elektron Digitone](https://img.youtube.com/vi/EXf6lOTjla8/0.jpg)](https://www.youtube.com/watch?v=EXf6lOTjla8)
+
 ## Installation and Usage
 
 ### Prerequisites
