@@ -1,0 +1,133 @@
+"""
+Amp tools for controlling amplitude and envelope parameters on the Digitone.
+"""
+
+from elektron_mcp.digitone.controller.amp_fx_controller import AmpController
+from elektron_mcp.digitone.config.digitone_config import digitone_config
+
+
+def register_amp_tools(mcp, midi):
+    """
+    Register all amp tools with the MCP server.
+
+    Args:
+        mcp: The MCP server instance
+        midi: The MIDI interface
+    """
+
+    @mcp.tool()
+    def set_amp_attack(value: int, track: int):
+        """
+        Set the attack time of the amplitude envelope.
+
+        Args:
+            value: int - The attack time to set. 0-127
+            track: int - The track number to set the amp attack for. 1-16
+        """
+        return AmpController(
+            digitone_config.amp_page.parameters, midi, track
+        ).set_attack(value)
+
+    @mcp.tool()
+    def set_amp_hold(value: int, track: int):
+        """
+        Set the hold time of the amplitude envelope.
+
+        Args:
+            value: int - The hold time to set. 0-127
+            track: int - The track number to set the amp hold for. 1-16
+        """
+        return AmpController(digitone_config.amp_page.parameters, midi, track).set_hold(
+            value
+        )
+
+    @mcp.tool()
+    def set_amp_decay(value: int, track: int):
+        """
+        Set the decay time of the amplitude envelope.
+
+        Args:
+            value: int - The decay time to set. 0-127
+            track: int - The track number to set the amp decay for. 1-16
+        """
+        return AmpController(
+            digitone_config.amp_page.parameters, midi, track
+        ).set_decay(value)
+
+    @mcp.tool()
+    def set_amp_sustain(value: int, track: int):
+        """
+        Set the sustain level of the amplitude envelope.
+
+        Args:
+            value: int - The sustain level to set. 0-127
+            track: int - The track number to set the amp sustain for. 1-16
+        """
+        return AmpController(
+            digitone_config.amp_page.parameters, midi, track
+        ).set_sustain(value)
+
+    @mcp.tool()
+    def set_amp_release(value: int, track: int):
+        """
+        Set the release time of the amplitude envelope.
+
+        Args:
+            value: int - The release time to set. 0-127
+            track: int - The track number to set the amp release for. 1-16
+        """
+        return AmpController(
+            digitone_config.amp_page.parameters, midi, track
+        ).set_release(value)
+
+    @mcp.tool()
+    def set_amp_envelope_reset(value: int, track: int):
+        """
+        Set the envelope reset mode.
+
+        Args:
+            value: int - The envelope reset mode to set. 0-1 (0="off", 1="on")
+            track: int - The track number to set the amp envelope reset for. 1-16
+        """
+        return AmpController(
+            digitone_config.amp_page.parameters, midi, track
+        ).set_envelope_reset(value)
+
+    @mcp.tool()
+    def set_amp_envelope_mode(value: int, track: int):
+        """
+        Set the envelope mode.
+
+        Args:
+            value: int - The envelope mode to set. 0-1 (0="AHD", 1="ADSR")
+            track: int - The track number to set the amp envelope mode for. 1-16
+        """
+        return AmpController(
+            digitone_config.amp_page.parameters, midi, track
+        ).set_envelope_mode(value)
+
+    @mcp.tool()
+    def set_amp_pan(value: int, track: int):
+        """
+        Set the stereo panning position.
+
+        Args:
+            value: int - The pan position to set. 0-127 (display range: -64 to +64)
+            track: int - The track number to set the amp pan for. 1-16
+        """
+        return AmpController(digitone_config.amp_page.parameters, midi, track).set_pan(
+            value
+        )
+
+    @mcp.tool()
+    def set_amp_volume(value: int, track: int):
+        """
+        Set the overall volume level.
+
+        Args:
+            value: int - The volume level to set. 0-127
+            track: int - The track number to set the amp volume for. 1-16
+        """
+        return AmpController(
+            digitone_config.amp_page.parameters, midi, track
+        ).set_volume(value)
