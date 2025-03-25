@@ -24,7 +24,8 @@ def check_midi_connection():
         return False
 
 
-if __name__ == "__main__":
+def main():
+    """Entry point for the elektron-mcp command"""
     print("Starting Elektron MCP server...", file=sys.stderr)
 
     # Verify MIDI connection before starting server
@@ -39,3 +40,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"ERROR running MCP server: {str(e)}", file=sys.stderr)
         sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
