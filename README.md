@@ -31,7 +31,7 @@ A Model Context Protocol (MCP) server that allows Claude and other MCP-compatibl
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/elektron-mcp.git
+git https://github.com/zerubeus/elektron-mcp.git
 cd elektron-mcp
 
 # Install dependencies with uv
