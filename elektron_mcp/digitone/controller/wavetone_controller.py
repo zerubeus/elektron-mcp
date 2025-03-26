@@ -1,18 +1,8 @@
-from elektron_mcp.digitone.models.models import ParameterGroup
-from elektron_mcp.midi.digitone_midi import DigitoneMIDI
 from elektron_mcp.digitone.controller.base_synth_controller import BaseSynthController
 
 
 class WavetoneController(BaseSynthController):
     """Controller for Wavetone parameters."""
-
-    def __init__(
-        self,
-        wavetone_config: dict[str, ParameterGroup],
-        digitone_midi: DigitoneMIDI,
-        midi_channel: int,
-    ):
-        super().__init__(wavetone_config, digitone_midi, midi_channel)
 
     # Oscillator 1 methods
     def set_osc1_pitch(self, value: int) -> bool:

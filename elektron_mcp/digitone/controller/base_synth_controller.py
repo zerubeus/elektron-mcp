@@ -153,28 +153,6 @@ class BaseSynthController:
 
         param = self.config[param_name]
 
-        # Try NRPN first
-        try:
-            if hasattr(param.midi, "nrpn_msb") and hasattr(param.midi, "nrpn_lsb"):
-                result = self.digitone_midi.send_nrpn(
-                    self.midi_channel,
-                    param.midi.nrpn_msb,
-                    param.midi.nrpn_lsb,
-                    value,
-                )
-
-                if result:
-                    logger.debug(f"Set {param_name} to {value} using NRPN")
-                    return result
-            else:
-                logger.debug(f"No NRPN mapping for {param_name}, trying CC")
-
-        except Exception as e:
-            logger.warning(
-                f"NRPN method failed for {param_name}: {e}. Trying CC method."
-            )
-
-        # Fall back to CC
         try:
             if not param.midi.cc_msb:
                 logger.error(f"No CC MSB defined for {param_name}")

@@ -1,18 +1,8 @@
-from elektron_mcp.digitone.models.models import ParameterGroup
-from elektron_mcp.midi.digitone_midi import DigitoneMIDI
 from elektron_mcp.digitone.controller.base_synth_controller import BaseSynthController
 
 
 class SwarmerController(BaseSynthController):
     """Controller for Swarmer parameters."""
-
-    def __init__(
-        self,
-        swarmer_config: dict[str, ParameterGroup],
-        digitone_midi: DigitoneMIDI,
-        midi_channel: int,
-    ):
-        super().__init__(swarmer_config, digitone_midi, midi_channel)
 
     def set_tune(self, value: int) -> bool:
         """Set the tuning of the swarmer."""

@@ -1,18 +1,8 @@
-from elektron_mcp.digitone.models.models import ParameterGroup
-from elektron_mcp.midi.digitone_midi import DigitoneMIDI
 from elektron_mcp.digitone.controller.base_synth_controller import BaseSynthController
 
 
 class FMToneController(BaseSynthController):
     """Controller for FM Tone parameters."""
-
-    def __init__(
-        self,
-        fmtone_config: dict[str, ParameterGroup],
-        digitone_midi: DigitoneMIDI,
-        midi_channel: int,
-    ):
-        super().__init__(fmtone_config, digitone_midi, midi_channel)
 
     # Algorithm and operator parameters (page 1)
     def set_algorithm(self, value: int) -> bool:
