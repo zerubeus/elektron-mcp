@@ -21,8 +21,12 @@ def register_amp_tools(mcp, midi):
         Set the attack time of the amplitude envelope.
 
         Args:
-            value: int - The attack time to set. 0-127
-            track: int - The track number to set the amp attack for. 1-16
+            value (int): Attack time value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 8.
+            track (int): The track number to set the amp attack for. 1-16
         """
         return AmpController(
             digitone_config.amp_page.parameters, midi, track
@@ -34,8 +38,12 @@ def register_amp_tools(mcp, midi):
         Set the hold time of the amplitude envelope.
 
         Args:
-            value: int - The hold time to set. 0-127
-            track: int - The track number to set the amp hold for. 1-16
+            value (int): Hold time value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 127.
+            track (int): The track number to set the amp hold for. 1-16
         """
         return AmpController(digitone_config.amp_page.parameters, midi, track).set_hold(
             value
@@ -47,8 +55,12 @@ def register_amp_tools(mcp, midi):
         Set the decay time of the amplitude envelope.
 
         Args:
-            value: int - The decay time to set. 0-127
-            track: int - The track number to set the amp decay for. 1-16
+            value (int): Decay time value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 32.
+            track (int): The track number to set the amp decay for. 1-16
         """
         return AmpController(
             digitone_config.amp_page.parameters, midi, track
@@ -60,8 +72,12 @@ def register_amp_tools(mcp, midi):
         Set the sustain level of the amplitude envelope.
 
         Args:
-            value: int - The sustain level to set. 0-127
-            track: int - The track number to set the amp sustain for. 1-16
+            value (int): Sustain level value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 96.
+            track (int): The track number to set the amp sustain for. 1-16
         """
         return AmpController(
             digitone_config.amp_page.parameters, midi, track
@@ -73,8 +89,12 @@ def register_amp_tools(mcp, midi):
         Set the release time of the amplitude envelope.
 
         Args:
-            value: int - The release time to set. 0-127
-            track: int - The track number to set the amp release for. 1-16
+            value (int): Release time value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 24.
+            track (int): The track number to set the amp release for. 1-16
         """
         return AmpController(
             digitone_config.amp_page.parameters, midi, track
@@ -86,8 +106,12 @@ def register_amp_tools(mcp, midi):
         Set the envelope reset mode.
 
         Args:
-            value: int - The envelope reset mode to set. 0-1 (0="off", 1="on")
-            track: int - The track number to set the amp envelope reset for. 1-16
+            value (int): Envelope reset mode value ranging from 0 to 1.
+                - 0 = "off"
+                - 1 = "on"
+                Display range: discrete options.
+                Default is "on" (1).
+            track (int): The track number to set the amp envelope reset for. 1-16
         """
         return AmpController(
             digitone_config.amp_page.parameters, midi, track
@@ -99,8 +123,12 @@ def register_amp_tools(mcp, midi):
         Set the envelope mode.
 
         Args:
-            value: int - The envelope mode to set. 0-1 (0="AHD", 1="ADSR")
-            track: int - The track number to set the amp envelope mode for. 1-16
+            value (int): Envelope mode value ranging from 0 to 1.
+                - 0 = "AHD"
+                - 1 = "ADSR"
+                Display range: discrete options.
+                Default is "ADSR" (1).
+            track (int): The track number to set the amp envelope mode for. 1-16
         """
         return AmpController(
             digitone_config.amp_page.parameters, midi, track
@@ -112,8 +140,14 @@ def register_amp_tools(mcp, midi):
         Set the stereo panning position.
 
         Args:
-            value: int - The pan position to set. 0-127 (display range: -64 to +64)
-            track: int - The track number to set the amp pan for. 1-16
+            value (int): Pan position value ranging from 0 to 127.
+                - 0 maps to -64
+                - 64 maps to 0
+                - 127 maps to +64
+                Values in between are linearly mapped.
+                Display range: -64 to +64.
+                Default is 0 (center).
+            track (int): The track number to set the amp pan for. 1-16
         """
         return AmpController(digitone_config.amp_page.parameters, midi, track).set_pan(
             value
@@ -125,8 +159,12 @@ def register_amp_tools(mcp, midi):
         Set the overall volume level.
 
         Args:
-            value: int - The volume level to set. 0-127
-            track: int - The track number to set the amp volume for. 1-16
+            value (int): Volume level value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 110.
+            track (int): The track number to set the amp volume for. 1-16
         """
         return AmpController(
             digitone_config.amp_page.parameters, midi, track

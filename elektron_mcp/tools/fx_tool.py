@@ -21,8 +21,12 @@ def register_fx_tools(mcp, midi):
         Set the bit reduction amount.
 
         Args:
-            value: int - The bit reduction amount to set. 0-127
-            track: int - The track number to set the FX bit reduction for. 1-16
+            value (int): Bit reduction value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the FX bit reduction for. 1-16
         """
         return FXController(
             digitone_config.fx_page.parameters, midi, track
@@ -34,8 +38,12 @@ def register_fx_tools(mcp, midi):
         Set the overdrive amount.
 
         Args:
-            value: int - The overdrive amount to set. 0-127
-            track: int - The track number to set the FX overdrive for. 1-16
+            value (int): Overdrive value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the FX overdrive for. 1-16
         """
         return FXController(
             digitone_config.fx_page.parameters, midi, track
@@ -47,8 +55,12 @@ def register_fx_tools(mcp, midi):
         Set the sample rate reduction amount.
 
         Args:
-            value: int - The sample rate reduction amount to set. 0-127
-            track: int - The track number to set the FX sample rate reduction for. 1-16
+            value (int): Sample rate reduction value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the FX sample rate reduction for. 1-16
         """
         return FXController(
             digitone_config.fx_page.parameters, midi, track
@@ -60,8 +72,12 @@ def register_fx_tools(mcp, midi):
         Set the sample rate reduction routing.
 
         Args:
-            value: int - The sample rate routing to set. 0-1 (0="pre", 1="post")
-            track: int - The track number to set the FX sample rate routing for. 1-16
+            value (int): Sample rate routing value ranging from 0 to 1.
+                - 0 = "pre"
+                - 1 = "post"
+                Display range: discrete options.
+                Default is "pre" (0).
+            track (int): The track number to set the FX sample rate routing for. 1-16
         """
         return FXController(
             digitone_config.fx_page.parameters, midi, track
@@ -73,8 +89,12 @@ def register_fx_tools(mcp, midi):
         Set the overdrive routing.
 
         Args:
-            value: int - The overdrive routing to set. 0-1 (0="pre", 1="post")
-            track: int - The track number to set the FX overdrive routing for. 1-16
+            value (int): Overdrive routing value ranging from 0 to 1.
+                - 0 = "pre"
+                - 1 = "post"
+                Display range: discrete options.
+                Default is "pre" (0).
+            track (int): The track number to set the FX overdrive routing for. 1-16
         """
         return FXController(
             digitone_config.fx_page.parameters, midi, track
@@ -86,8 +106,12 @@ def register_fx_tools(mcp, midi):
         Set the delay send amount.
 
         Args:
-            value: int - The delay send amount to set. 0-127
-            track: int - The track number to set the FX delay for. 1-16
+            value (int): Delay send value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the FX delay for. 1-16
         """
         return FXController(digitone_config.fx_page.parameters, midi, track).set_delay(
             value
@@ -99,8 +123,12 @@ def register_fx_tools(mcp, midi):
         Set the reverb send amount.
 
         Args:
-            value: int - The reverb send amount to set. 0-127
-            track: int - The track number to set the FX reverb for. 1-16
+            value (int): Reverb send value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the FX reverb for. 1-16
         """
         return FXController(digitone_config.fx_page.parameters, midi, track).set_reverb(
             value
@@ -112,8 +140,12 @@ def register_fx_tools(mcp, midi):
         Set the chorus send amount.
 
         Args:
-            value: int - The chorus send amount to set. 0-127
-            track: int - The track number to set the FX chorus for. 1-16
+            value (int): Chorus send value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the FX chorus for. 1-16
         """
         return FXController(digitone_config.fx_page.parameters, midi, track).set_chorus(
             value

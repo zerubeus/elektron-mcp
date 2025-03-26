@@ -6,8 +6,8 @@ WAVETONE_PARAMS = {
             "nrpn_msb": 73,
             "max_midi": 127,
             "min_midi": 0,
-            "max_val": 60,
-            "min_val": -60,
+            "max_val": 5,
+            "min_val": -5,
             "default": 0,
         },
         "WAV1": {
@@ -46,8 +46,8 @@ WAVETONE_PARAMS = {
             "nrpn_msb": 77,
             "max_midi": 127,
             "min_midi": 0,
-            "max_val": 60,
-            "min_val": -60,
+            "max_val": 5,
+            "min_val": -5,
             "default": 0,
         },
         "WAV2": {

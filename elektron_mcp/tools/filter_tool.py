@@ -21,8 +21,12 @@ def register_filter_tools(mcp, midi):
         Set the attack time of the multi-mode filter envelope.
 
         Args:
-            value: int - The attack time to set. 0-127
-            track: int - The track number to set the filter attack for. 1-16
+            value (int): Attack time value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the filter attack for. 1-16
         """
         return MultiModeFilterController(
             digitone_config.multi_mode_filter.parameters, midi, track
@@ -34,8 +38,12 @@ def register_filter_tools(mcp, midi):
         Set the decay time of the multi-mode filter envelope.
 
         Args:
-            value: int - The decay time to set. 0-127
-            track: int - The track number to set the filter decay for. 1-16
+            value (int): Decay time value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 64.
+            track (int): The track number to set the filter decay for. 1-16
         """
         return MultiModeFilterController(
             digitone_config.multi_mode_filter.parameters, midi, track
@@ -47,8 +55,12 @@ def register_filter_tools(mcp, midi):
         Set the sustain level of the multi-mode filter envelope.
 
         Args:
-            value: int - The sustain level to set. 0-127
-            track: int - The track number to set the filter sustain for. 1-16
+            value (int): Sustain level value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the filter sustain for. 1-16
         """
         return MultiModeFilterController(
             digitone_config.multi_mode_filter.parameters, midi, track
@@ -60,8 +72,12 @@ def register_filter_tools(mcp, midi):
         Set the release time of the multi-mode filter envelope.
 
         Args:
-            value: int - The release time to set. 0-127
-            track: int - The track number to set the filter release for. 1-16
+            value (int): Release time value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 64.
+            track (int): The track number to set the filter release for. 1-16
         """
         return MultiModeFilterController(
             digitone_config.multi_mode_filter.parameters, midi, track
@@ -73,8 +89,12 @@ def register_filter_tools(mcp, midi):
         Set the cutoff frequency of the multi-mode filter.
 
         Args:
-            value: int - The cutoff frequency to set. 0-127
-            track: int - The track number to set the filter frequency for. 1-16
+            value (int): Cutoff frequency value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 127.
+            track (int): The track number to set the filter frequency for. 1-16
         """
         return MultiModeFilterController(
             digitone_config.multi_mode_filter.parameters, midi, track
@@ -86,8 +106,12 @@ def register_filter_tools(mcp, midi):
         Set the resonance of the multi-mode filter.
 
         Args:
-            value: int - The resonance value to set. 0-127
-            track: int - The track number to set the filter resonance for. 1-16
+            value (int): Resonance value ranging from 0 to 127.
+                - 0 maps to 0
+                - 127 maps to 127
+                Display range: 0-127.
+                Default is 0.
+            track (int): The track number to set the filter resonance for. 1-16
         """
         return MultiModeFilterController(
             digitone_config.multi_mode_filter.parameters, midi, track
@@ -99,8 +123,14 @@ def register_filter_tools(mcp, midi):
         Set the type of the multi-mode filter.
 
         Args:
-            value: int - The filter type to set. 0-127 (Various filter types: LP2, LP4, BP2, BP4, HP2, HP4, etc.)
-            track: int - The track number to set the filter type for. 1-16
+            value (int): Filter type value ranging from 0 to 127.
+                - 0   = Lowpass
+                - 64  = EQ
+                - 127 = Highpass
+                Values between these points represent transitions between filter types.
+                Display range: continuous.
+                Default is 0 (Lowpass).
+            track (int): The track number to set the filter type for. 1-16
         """
         return MultiModeFilterController(
             digitone_config.multi_mode_filter.parameters, midi, track
@@ -112,8 +142,14 @@ def register_filter_tools(mcp, midi):
         Set the envelope depth of the multi-mode filter.
 
         Args:
-            value: int - The envelope depth to set. 0-127 (display range: -64 to +64)
-            track: int - The track number to set the filter envelope depth for. 1-16
+            value (int): Envelope depth value ranging from 0 to 127.
+                - 0 maps to -64
+                - 64 maps to 0
+                - 127 maps to +64
+                Values in between are linearly mapped.
+                Display range: -64 to +64.
+                Default is 0.
+            track (int): The track number to set the filter envelope depth for. 1-16
         """
         return MultiModeFilterController(
             digitone_config.multi_mode_filter.parameters, midi, track
