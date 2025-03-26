@@ -13,12 +13,14 @@ from elektron_mcp.digitone.constants.fm_tone import FM_TONE_PARAMS
 from elektron_mcp.digitone.constants.swarmer import SWARMER_PARAMS
 from elektron_mcp.digitone.constants.wavetone import WAVETONE_PARAMS
 from elektron_mcp.digitone.constants.lfo import LFO1_PARAMS, LFO2_PARAMS, LFO3_PARAMS
+from elektron_mcp.digitone.constants.amp import AMP_PARAMS_DATA
+from elektron_mcp.digitone.constants.fx import FX_PARAMS_DATA
 from elektron_mcp.digitone.models.models import DigitoneConfig
 from elektron_mcp.digitone.utils.parameter_utils import (
     create_lfo_params,
     create_parameter_group,
     setup_filter_parameters,
-    create_parameter,
+    create_param_from_dict,
 )
 
 # Create the elektron configuration
@@ -63,29 +65,10 @@ setup_filter_parameters(digitone_config.base_width_filter, BASE_WIDTH_FILTER_PAR
 
 # AMP page
 digitone_config.amp_page.parameters = {
-    "ATK": create_parameter("84", "1", "30", 127, 0, 127, 0, 8),
-    "HOLD": create_parameter("85", "1", "31", 127, 0, 127, 0, 127),
-    "DEC": create_parameter("86", "1", "32", 127, 0, 127, 0, 32),
-    "SUS": create_parameter("87", "1", "33", 127, 0, 127, 0, 96),
-    "REL": create_parameter("88", "1", "34", 127, 0, 127, 0, 24),
-    "Env. RSET": create_parameter("92", "1", "41", 1, 0, 1, 0, "on", ["off", "on"]),
-    "MODE": create_parameter("91", "1", "40", 1, 0, 1, 0, "ADSR", ["AHD", "ADSR"]),
-    "PAN": create_parameter("89", "1", "38", 127, 0, 64, -64, 0),
-    "VOL": create_parameter("90", "1", "39", 127, 0, 127, 0, 110),
+    name: create_param_from_dict(param) for name, param in AMP_PARAMS_DATA.items()
 }
 
 # FX page
 digitone_config.fx_page.parameters = {
-    "BR": create_parameter("78", "1", "5", 127, 0, 127, 0, 0),
-    "OVER": create_parameter("81", "1", "8", 127, 0, 127, 0, 0),
-    "SRR": create_parameter("79", "1", "6", 127, 0, 127, 0, 0),
-    "SR.RT(pre/post)": create_parameter(
-        "80", "1", "7", 1, 0, 1, 0, "pre", ["pre", "post"]
-    ),
-    "OD.RT(pre/post)": create_parameter(
-        "82", "1", "9", 1, 0, 1, 0, "pre", ["pre", "post"]
-    ),
-    "DEL": create_parameter("30", "1", "36", 127, 0, 127, 0, 0),
-    "REV": create_parameter("31", "1", "37", 127, 0, 127, 0, 0),
-    "CHR": create_parameter("29", "1", "35", 127, 0, 127, 0, 0),
+    name: create_param_from_dict(param) for name, param in FX_PARAMS_DATA.items()
 }
