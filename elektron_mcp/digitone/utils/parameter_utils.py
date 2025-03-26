@@ -9,8 +9,8 @@ def _extract_param_values(param_dict):
     """Helper function to extract parameter values with common defaults from a dictionary"""
     return {
         "cc_msb": str(param_dict.get("cc_msb", param_dict.get("cc", ""))),
-        "nrpn_lsb": str(param_dict.get("nrpn_lsb", "1")),
-        "nrpn_msb": str(param_dict.get("nrpn_msb", param_dict.get("nrpn", ""))),
+        "nrpn_lsb": param_dict.get("nrpn_lsb", 1),
+        "nrpn_msb": param_dict.get("nrpn_msb", param_dict.get("nrpn", 0)),
         "max_midi": param_dict.get("max_midi", 127),
         "min_midi": param_dict.get("min_midi", 0),
         "max_val": param_dict.get("max_val", 127),
@@ -32,13 +32,15 @@ def create_parameter(
     options=None,
 ):
     """Helper function to create a parameter with midi mapping"""
-    # Convert numeric values to strings for MIDI parameters
+    # Convert only CC MSB to string, keep NRPN values as integers
     cc_msb_str = str(cc_msb) if isinstance(cc_msb, (int, float)) else cc_msb
-    nrpn_lsb_str = str(nrpn_lsb) if isinstance(nrpn_lsb, (int, float)) else nrpn_lsb
-    nrpn_msb_str = str(nrpn_msb) if isinstance(nrpn_msb, (int, float)) else nrpn_msb
+
+    # Don't convert NRPN values to strings - they should be integers
+    nrpn_lsb_int = int(nrpn_lsb) if isinstance(nrpn_lsb, (str, float)) else nrpn_lsb
+    nrpn_msb_int = int(nrpn_msb) if isinstance(nrpn_msb, (str, float)) else nrpn_msb
 
     mapping = MidiMapping(
-        cc_msb=cc_msb_str, nrpn_lsb=nrpn_lsb_str, nrpn_msb=nrpn_msb_str
+        cc_msb=cc_msb_str, nrpn_lsb=nrpn_lsb_int, nrpn_msb=nrpn_msb_int
     )
     return DigitoneParams(
         midi=mapping,

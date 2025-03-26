@@ -12,6 +12,12 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# MIDI Standard Control Change (CC) numbers for NRPN
+NRPN_MSB_CC = 99  # CC for Non-Registered Parameter Number MSB
+NRPN_LSB_CC = 98  # CC for Non-Registered Parameter Number LSB
+DATA_ENTRY_MSB_CC = 6  # CC for Data Entry MSB
+DATA_ENTRY_LSB_CC = 38  # CC for Data Entry LSB (for 14-bit precision)
+
 
 class DigitoneMIDI:
     """Interface for MIDI communication with Elektron Digitone."""
@@ -129,4 +135,72 @@ class DigitoneMIDI:
             return True
         except Exception as e:
             logger.error(f"Error sending CC message: {e}")
+            return False
+
+    def send_nrpn(self, channel: int, nrpn_msb: int, nrpn_lsb: int, value: int) -> bool:
+        """
+        Send a Non-Registered Parameter Number (NRPN) message sequence.
+
+        This sends a complete NRPN sequence:
+        1. CC 99 (NRPN MSB)
+        2. CC 98 (NRPN LSB)
+        3. CC 6 (Data Entry MSB)
+
+        Args:
+            channel: MIDI channel (1-16)
+            nrpn_msb: NRPN Parameter MSB (0-127)
+            nrpn_lsb: NRPN Parameter LSB (0-127)
+            value: Parameter value (0-127)
+
+        Returns:
+            bool: True if all messages sent successfully, False otherwise.
+        """
+        if not self.connected or not self.output_port:
+            logger.error("Not connected to any MIDI port")
+            return False
+
+        # Convert 1-indexed channel to 0-indexed
+        if 1 <= channel <= 16:
+            channel = channel - 1
+        else:
+            logger.error(f"Invalid channel: {channel}. Must be between 1-16.")
+            return False
+
+        try:
+            # Send NRPN MSB (CC 99)
+            self.output_port.send(
+                mido.Message(
+                    "control_change",
+                    channel=channel,
+                    control=NRPN_MSB_CC,
+                    value=nrpn_msb,
+                )
+            )
+
+            # Send NRPN LSB (CC 98)
+            self.output_port.send(
+                mido.Message(
+                    "control_change",
+                    channel=channel,
+                    control=NRPN_LSB_CC,
+                    value=nrpn_lsb,
+                )
+            )
+
+            # Send Data Entry MSB (CC 6)
+            self.output_port.send(
+                mido.Message(
+                    "control_change",
+                    channel=channel,
+                    control=DATA_ENTRY_MSB_CC,
+                    value=value,
+                )
+            )
+
+            logger.debug(
+                f"Sent NRPN: channel={channel+1}, nrpn={nrpn_msb}/{nrpn_lsb}, value={value}"
+            )
+            return True
+        except Exception as e:
+            logger.error(f"Error sending NRPN message: {e}")
             return False

@@ -1,4 +1,7 @@
 from elektron_mcp.digitone.controller.base_synth_controller import BaseSynthController
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class BaseLFOController(BaseSynthController):
@@ -6,7 +9,7 @@ class BaseLFOController(BaseSynthController):
 
     def set_lfo_parameter(self, param_name: str, value: int) -> bool:
         """
-        Set an LFO parameter value.
+        Set an LFO parameter value using the improved base controller method.
 
         Args:
             param_name: The LFO parameter name
@@ -18,21 +21,8 @@ class BaseLFOController(BaseSynthController):
         Raises:
             ValueError: If the parameter doesn't exist
         """
-        if param_name not in self.config:
-            raise ValueError(f"Invalid parameter: {param_name}")
-
-        param = self.config[param_name]
-
-        result = self.digitone_midi.send_cc(
-            self.midi_channel,
-            int(param.midi.cc_msb),
-            value,
-        )
-
-        if result is None:
-            raise Exception(f"Failed to set {param_name}")
-
-        return result
+        # Use the direct parameter access in the base class
+        return self.set_direct_parameter(param_name, value)
 
 
 class LFO1Controller(BaseLFOController):

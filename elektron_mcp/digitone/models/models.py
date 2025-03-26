@@ -4,8 +4,8 @@ from pydantic import BaseModel, Field, model_validator
 
 class MidiMapping(BaseModel):
     cc_msb: str
-    nrpn_lsb: str
-    nrpn_msb: str
+    nrpn_lsb: int
+    nrpn_msb: int
 
 
 class DigitoneParams(BaseModel):

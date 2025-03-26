@@ -67,10 +67,10 @@ LFO3_SPECIFIC = LFO2_SPECIFIC + [
 
 # LFO Parameters
 LFO1_PARAMS = {
-    "SPD": {"cc_msb": 102, "nrpn_lsb": "1", "nrpn_msb": 42, "default": 48},
+    "SPD": {"cc_msb": 102, "nrpn_lsb": 1, "nrpn_msb": 42, "default": 48},
     "MULT": {
         "cc_msb": 103,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 43,
         "max_midi": 11,
         "max_val": 2000,
@@ -79,7 +79,7 @@ LFO1_PARAMS = {
     },
     "FADE": {
         "cc_msb": 104,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 44,
         "max_val": 63,
         "min_val": -64,
@@ -87,7 +87,7 @@ LFO1_PARAMS = {
     },
     "DEST": {
         "cc_msb": 105,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 45,
         "max_midi": 50,
         "min_midi": 25,
@@ -98,31 +98,31 @@ LFO1_PARAMS = {
     },
     "WAVE": {
         "cc_msb": 106,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 46,
         "max_midi": 6,
         "max_val": 6,
         "default": "sine",
         "options": ["tri", "sine", "sqr", "saw", "expo", "ramp", "rand"],
     },
-    "SPH": {"cc_msb": 107, "nrpn_lsb": "1", "nrpn_msb": 47},
+    "SPH": {"cc_msb": 107, "nrpn_lsb": 1, "nrpn_msb": 47},
     "MODE": {
         "cc_msb": 108,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 48,
         "max_midi": 4,
         "max_val": 4,
         "default": "free",
         "options": ["free", "trig", "hold", "one", "half"],
     },
-    "DEP": {"cc_msb": 109, "nrpn_lsb": "1", "nrpn_msb": 49},
+    "DEP": {"cc_msb": 109, "nrpn_lsb": 1, "nrpn_msb": 49},
 }
 
 LFO2_PARAMS = {
-    "SPD": {"cc_msb": 111, "nrpn_lsb": "1", "nrpn_msb": 50, "default": 48},
+    "SPD": {"cc_msb": 111, "nrpn_lsb": 1, "nrpn_msb": 50, "default": 48},
     "MULT": {
         "cc_msb": 112,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 51,
         "max_midi": 11,
         "max_val": 2000,
@@ -131,7 +131,7 @@ LFO2_PARAMS = {
     },
     "FADE": {
         "cc_msb": 113,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 52,
         "max_val": 63,
         "min_val": -64,
@@ -139,7 +139,7 @@ LFO2_PARAMS = {
     },
     "DEST": {
         "cc_msb": 114,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 53,
         "max_midi": 50,
         "min_midi": 25,
@@ -150,31 +150,31 @@ LFO2_PARAMS = {
     },
     "WAVE": {
         "cc_msb": 115,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 54,
         "max_midi": 6,
         "max_val": 6,
         "default": "sine",
         "options": ["tri", "sine", "sqr", "saw", "expo", "ramp", "rand"],
     },
-    "SPH": {"cc_msb": 116, "nrpn_lsb": "1", "nrpn_msb": 55},
+    "SPH": {"cc_msb": 116, "nrpn_lsb": 1, "nrpn_msb": 55},
     "MODE": {
         "cc_msb": 117,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 56,
         "max_midi": 4,
         "max_val": 4,
         "default": "free",
         "options": ["free", "trig", "hold", "one", "half"],
     },
-    "DEP": {"cc_msb": 118, "nrpn_lsb": "1", "nrpn_msb": 57},
+    "DEP": {"cc_msb": 118, "nrpn_lsb": 1, "nrpn_msb": 57},
 }
 
 LFO3_PARAMS = {
-    "SPD": {"cc_msb": 121, "nrpn_lsb": "1", "nrpn_msb": 58, "default": 48},
+    "SPD": {"cc_msb": 121, "nrpn_lsb": 1, "nrpn_msb": 58, "default": 48},
     "MULT": {
         "cc_msb": 122,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 59,
         "max_midi": 11,
         "max_val": 2000,
@@ -183,7 +183,7 @@ LFO3_PARAMS = {
     },
     "FADE": {
         "cc_msb": 123,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 60,
         "max_val": 63,
         "min_val": -64,
@@ -191,7 +191,7 @@ LFO3_PARAMS = {
     },
     "DEST": {
         "cc_msb": 124,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 61,
         "max_midi": 50,
         "min_midi": 25,
@@ -202,22 +202,22 @@ LFO3_PARAMS = {
     },
     "WAVE": {
         "cc_msb": 125,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 62,
         "max_midi": 6,
         "max_val": 6,
         "default": "sine",
         "options": ["tri", "sine", "sqr", "saw", "expo", "ramp", "rand"],
     },
-    "SPH": {"cc_msb": 126, "nrpn_lsb": "1", "nrpn_msb": 70},
+    "SPH": {"cc_msb": 126, "nrpn_lsb": 1, "nrpn_msb": 70},
     "MODE": {
         "cc_msb": 127,
-        "nrpn_lsb": "1",
+        "nrpn_lsb": 1,
         "nrpn_msb": 71,
         "max_midi": 4,
         "max_val": 4,
         "default": "free",
         "options": ["free", "trig", "hold", "one", "half"],
     },
-    "DEP": {"cc_msb": 128, "nrpn_lsb": "1", "nrpn_msb": 72},
+    "DEP": {"cc_msb": 128, "nrpn_lsb": 1, "nrpn_msb": 72},
 }
