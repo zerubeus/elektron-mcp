@@ -1,6 +1,6 @@
 [project]
 name = "elektron-mcp"
-version = "0.2.2"
+version = "0.2.3"
 authors = [{ name = "zerubeus", email = "zerubeus@gmail.com" }]
 description = "MPC to control Elektron machines (Digitakt 2, Digitone 2)"
 readme = "README.md"
