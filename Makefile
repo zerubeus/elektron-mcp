@@ -1,4 +1,4 @@
-.PHONY: clean build publish bump-patch bump-minor bump-major release-github release
+.PHONY: clean build publish bump-patch bump-minor bump-major release-github release commit-release
 
 # Define the token loading from .env file
 PYPI_TOKEN := $(shell grep PYPI_TOKEN .env | cut -d '=' -f2)
@@ -40,12 +40,19 @@ build: clean
 	@echo "Building package with uv..."
 	uv build
 
+# Commit the version changes
+commit-release:
+	@echo "Committing version $$(grep '^version = ' pyproject.toml | cut -d '"' -f2)..."
+	git add pyproject.toml
+	git commit -m "Release v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2)"
+
 # Create a GitHub release using the current version
-release-github: 
+release-github: commit-release
 	@echo "Creating GitHub release for version $$(grep '^version = ' pyproject.toml | cut -d '"' -f2)..."
 	@if [ -z "$$(which gh)" ]; then echo "Error: GitHub CLI not installed. Run 'brew install gh' or visit https://cli.github.com/"; exit 1; fi
 	@if ! gh auth status >/dev/null 2>&1; then echo "Error: You need to login to GitHub CLI. Run 'gh auth login'"; exit 1; fi
 	git tag -a v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2) -m "Release v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2)"
+	git push origin main
 	git push origin v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2)
 	gh release create v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2) --title "v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2)" --generate-notes ./dist/*
 
@@ -67,6 +74,7 @@ help:
 	@echo "  bump-major     - Bump major version (0.1.3 -> 1.0.0)"
 	@echo "  build          - Build the package using uv"
 	@echo "  publish        - Publish to PyPI with token from .env"
+	@echo "  commit-release - Commit version changes to git"
 	@echo "  release-github - Create a GitHub release for the current version"
 	@echo "  release        - Run bump-patch, build, publish and release-github in sequence"
 	@echo "  all            - Run clean, build, and publish in sequence" 
