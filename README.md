@@ -5,7 +5,6 @@ A Model Context Protocol (MCP) server that allows Claude and other MCP-compatibl
 ## Features
 
 - [x] Complete MIDI control interface for the Elektron Digitone synthesizer
-- [ ] Complete MIDI control interface for the Elektron Digitakt sampler
 - [x] Structured controllers for all Digitone sound engines:
   - [x] Wavetone (waveshaping synthesis)
   - [ ] FM Tone (FM synthesis)
@@ -22,7 +21,7 @@ A Model Context Protocol (MCP) server that allows Claude and other MCP-compatibl
     - [ ] BaseWidth
   - [x] Amplitude and envelope settings
   - [x] Effects processing (delay, reverb, chorus, bit reduction, etc.)
-  - [ ] LFOs control
+  - [x] LFOs control
 - [x] MCP server exposing all synth parameters as tools for LLMs
 - [x] Type-safe parameter validation using Pydantic
 - [x] Modular architecture for easy extension to other Elektron devices
