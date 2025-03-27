@@ -68,6 +68,8 @@ Follow the instructions [here](https://docs.astral.sh/uv/getting-started/install
 
 To use with Claude AI, add the MCP server configuration in Claude Desktop:
 
+⚠️ **Important**: You don't need to clone the repository or install the packages, all you need is to add the MCP server configuration to your claude_desktop_config.json file the MPC server is already published on pypi.
+
 Go to Claude > Settings > Developer > Edit Config > claude_desktop_config.json to include the following:
 
 ```json
