@@ -2,6 +2,15 @@
 
 A Model Context Protocol (MCP) server that allows Claude and other MCP-compatible LLMs to interact with and control Elektron synthesizers via MIDI.
 
+# Prompt examples
+
+```
+“Use Digitone MCP to design an evolving dark pad using the Wavetone machine on track 1.”
+"Use Digitone MPC to design a Dark thick pad using Wavetone machine on track 1."
+```
+
+Only Wavetone machine is supported for now, other machines will be added soon, stay tuned!
+
 ## Features
 
 - [x] Complete MIDI control interface for the Elektron Digitone synthesizer
