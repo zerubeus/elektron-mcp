@@ -42,12 +42,12 @@ build: clean
 
 # Create a GitHub release using the current version
 release-github: 
-	@echo "Creating GitHub release for version $(VERSION)..."
+	@echo "Creating GitHub release for version $$(grep '^version = ' pyproject.toml | cut -d '"' -f2)..."
 	@if [ -z "$$(which gh)" ]; then echo "Error: GitHub CLI not installed. Run 'brew install gh' or visit https://cli.github.com/"; exit 1; fi
 	@if ! gh auth status >/dev/null 2>&1; then echo "Error: You need to login to GitHub CLI. Run 'gh auth login'"; exit 1; fi
-	git tag -a v$(VERSION) -m "Release v$(VERSION)"
-	git push origin v$(VERSION)
-	gh release create v$(VERSION) --title "v$(VERSION)" --generate-notes ./dist/*
+	git tag -a v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2) -m "Release v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2)"
+	git push origin v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2)
+	gh release create v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2) --title "v$$(grep '^version = ' pyproject.toml | cut -d '"' -f2)" --generate-notes ./dist/*
 
 # Publish the package to PyPI with the token from .env
 publish: build
@@ -56,7 +56,7 @@ publish: build
 
 # Complete release process - bump version, build, publish to PyPI and GitHub
 release: bump-patch build publish release-github
-	@echo "Released version $(VERSION)"
+	@echo "Released version $$(grep '^version = ' pyproject.toml | cut -d '"' -f2)"
 
 # Help target
 help:
