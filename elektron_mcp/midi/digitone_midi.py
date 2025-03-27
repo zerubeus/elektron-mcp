@@ -3,7 +3,8 @@ Digitone MIDI Interface
 
 This module handles MIDI communication with Elektron Digitone devices.
 It provides functionality for connecting to Digitone over MIDI (USB),
-selecting channels, and sending control change (CC) messages.
+selecting channels, and sending control change (CC) messages, including
+the complete 14-bit NRPN sequence (CC 99, CC 98, CC 6, CC 38).
 """
 
 import mido
@@ -15,8 +16,8 @@ logger = logging.getLogger(__name__)
 # MIDI Standard Control Change (CC) numbers for NRPN
 NRPN_MSB_CC = 99  # CC for Non-Registered Parameter Number MSB
 NRPN_LSB_CC = 98  # CC for Non-Registered Parameter Number LSB
-DATA_ENTRY_MSB_CC = 6  # CC for Data Entry MSB
-DATA_ENTRY_LSB_CC = 38  # CC for Data Entry LSB (for 14-bit precision)
+DATA_ENTRY_MSB_CC = 6
+DATA_ENTRY_LSB_CC = 38
 
 
 class DigitoneMIDI:
@@ -139,18 +140,21 @@ class DigitoneMIDI:
 
     def send_nrpn(self, channel: int, nrpn_msb: int, nrpn_lsb: int, value: int) -> bool:
         """
-        Send a Non-Registered Parameter Number (NRPN) message sequence.
+        Send a Non-Registered Parameter Number (NRPN) message sequence (14-bit).
 
-        This sends a complete NRPN sequence:
-        1. CC 99 (NRPN MSB)
-        2. CC 98 (NRPN LSB)
-        3. CC 6 (Data Entry MSB)
+        Sends:
+          1. CC 99 (NRPN MSB)
+          2. CC 98 (NRPN LSB)
+          3. CC 6  (Data Entry MSB)
+          4. CC 38 (Data Entry LSB)
+
+        Elektron expects the complete 14-bit sequence even if you only need 7-bit resolution.
 
         Args:
             channel: MIDI channel (1-16)
             nrpn_msb: NRPN Parameter MSB (0-127)
             nrpn_lsb: NRPN Parameter LSB (0-127)
-            value: Parameter value (0-127)
+            value: 14-bit value (0-16383) or 7-bit (0-127)
 
         Returns:
             bool: True if all messages sent successfully, False otherwise.
@@ -161,44 +165,57 @@ class DigitoneMIDI:
 
         # Convert 1-indexed channel to 0-indexed
         if 1 <= channel <= 16:
-            channel = channel - 1
+            channel_idx = channel - 1
         else:
             logger.error(f"Invalid channel: {channel}. Must be between 1-16.")
             return False
 
         try:
-            # Send NRPN MSB (CC 99)
+            # MSB/LSB for the parameter ID
             self.output_port.send(
                 mido.Message(
                     "control_change",
-                    channel=channel,
+                    channel=channel_idx,
                     control=NRPN_MSB_CC,
                     value=nrpn_msb,
                 )
             )
-
-            # Send NRPN LSB (CC 98)
             self.output_port.send(
                 mido.Message(
                     "control_change",
-                    channel=channel,
+                    channel=channel_idx,
                     control=NRPN_LSB_CC,
                     value=nrpn_lsb,
                 )
             )
 
-            # Send Data Entry MSB (CC 6)
+            # If 'value' is only 0-127, just use DataEntry MSB as 'value' and LSB as 0
+            # If 'value' can be 0-16383, split it:
+            value_msb = (value >> 7) & 0x7F
+            value_lsb = value & 0x7F
+
+            # Data Entry MSB
             self.output_port.send(
                 mido.Message(
                     "control_change",
-                    channel=channel,
+                    channel=channel_idx,
                     control=DATA_ENTRY_MSB_CC,
-                    value=value,
+                    value=value_msb,
+                )
+            )
+            # Data Entry LSB
+            self.output_port.send(
+                mido.Message(
+                    "control_change",
+                    channel=channel_idx,
+                    control=DATA_ENTRY_LSB_CC,
+                    value=value_lsb,
                 )
             )
 
             logger.debug(
-                f"Sent NRPN: channel={channel+1}, nrpn={nrpn_msb}/{nrpn_lsb}, value={value}"
+                f"Sent NRPN: channel={channel}, NRPN={nrpn_msb}/{nrpn_lsb}, "
+                f"valueMSB={value_msb}, valueLSB={value_lsb}"
             )
             return True
         except Exception as e:
