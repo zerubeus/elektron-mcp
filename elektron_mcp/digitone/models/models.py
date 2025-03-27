@@ -15,16 +15,26 @@ class DigitoneParams(BaseModel):
     max_value: Union[int, float, List[Union[int, float]]]
     min_value: Union[int, float, List[Union[int, float]]]
     default_value: Union[int, float, str, List[Union[int, float]]]
-    options: Optional[List[str]] = None
+    options: Optional[Union[List[str], Dict[str, int]]] = None
 
     @model_validator(mode="after")
     def validate_values(self):
         """Validate parameter values"""
         # Check options
         if self.options is not None and isinstance(self.default_value, str):
-            if self.default_value not in self.options:
+            if (
+                isinstance(self.options, list)
+                and self.default_value not in self.options
+            ):
                 raise ValueError(
                     f"Default value '{self.default_value}' not in options list {self.options}"
+                )
+            elif (
+                isinstance(self.options, dict)
+                and self.default_value not in self.options
+            ):
+                raise ValueError(
+                    f"Default value '{self.default_value}' not in options dict {self.options}"
                 )
 
         # Check numeric range for numeric values (when not using options)
