@@ -102,9 +102,8 @@ def register_lfo_tools(mcp, midi):
                 - 45 = wavetone_noise_width
                 - 46 = wavetone_noise_type
                 - 47 = wavetone_noise_character
-                - 66 = filter_eq_freq
-                - 67 = filter_eq_req
-                - 68 = filter_eq_gain
+                - 66 = filter_type
+                - 67 = filter_freq
                 - 69 = filter_envelope_depth
                 - 70 = filter_envelope_delay
                 - 71 = filter_envelope_attack
@@ -300,9 +299,8 @@ def register_lfo_tools(mcp, midi):
                 - 45 = wavetone_noise_width
                 - 46 = wavetone_noise_type
                 - 47 = wavetone_noise_character
-                - 66 = filter_eq_freq
-                - 67 = filter_eq_req
-                - 68 = filter_eq_gain
+                - 66 = filter_type
+                - 67 = filter_freq
                 - 69 = filter_envelope_depth
                 - 70 = filter_envelope_delay
                 - 71 = filter_envelope_attack
