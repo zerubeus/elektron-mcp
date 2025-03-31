@@ -85,8 +85,6 @@ Go to Claude > Settings > Developer > Edit Config > claude_desktop_config.json t
 
 ## Architecture
 
-The library is designed with a clean, object-oriented architecture:
-
 - **Base Controllers**: Common functionality abstracted into base classes
 - **Specialized Controllers**: Dedicated controllers for each synth engine and module
 - **MCP Tools**: Direct interface between LLMs and the synth's parameters
