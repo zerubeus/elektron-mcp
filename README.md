@@ -2,10 +2,14 @@
 
 A Model Context Protocol (MCP) server that allows Claude and other MCP-compatible LLMs to interact with and control Elektron synthesizers via MIDI.
 
+A web-based version of this MCP server can be found at [senthgenie.com](https://www.senthgenie.com). (You can ask for API key for free on discord)
+
+If you want help or would like to contribute to development, please join our [Discord community](https://discord.gg/ZFuSuegBMS).
+
 # Prompt examples
 
 ```
-“Use Digitone MCP to design an evolving dark pad using the Wavetone machine on track 1.”
+"Use Digitone MCP to design an evolving dark pad using the Wavetone machine on track 1."
 "Use Digitone MPC to design a Dark thick pad using Wavetone machine on track 1."
 ```
 
