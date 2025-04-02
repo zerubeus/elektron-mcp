@@ -2,9 +2,9 @@
 
 A Model Context Protocol (MCP) server that allows Claude and other MCP-compatible LLMs to interact with and control Elektron synthesizers via MIDI.
 
-A web-based version of this MCP server can be found at [senthgenie.com](https://www.senthgenie.com). (You can ask for API key for free on discord)
+#### A web-based version of this MCP server can be found at [senthgenie.com](https://www.synthgenie.com/). (You can ask for API key for free on discord)
 
-If you want help or would like to contribute to development, please join our [Discord community](https://discord.gg/ZFuSuegBMS).
+#### If you want help or would like to contribute to development, please join our [Discord community](https://discord.gg/ZFuSuegBMS).
 
 # Prompt examples
 
