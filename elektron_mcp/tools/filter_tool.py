@@ -2,8 +2,8 @@
 Filter tools for controlling the multi-mode filter parameters on the Digitone.
 """
 
-from elektron_mcp.digitone.controller.filter_controller import MultiModeFilterController
-from elektron_mcp.digitone.config.digitone_config import digitone_config
+from elektron_mcp.digitone.services.filter_controller import MultiModeFilterController
+from elektron_mcp.digitone.config.config import digitone_config
 
 
 def register_filter_tools(mcp, midi):

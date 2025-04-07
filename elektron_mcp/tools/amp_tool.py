@@ -2,8 +2,8 @@
 Amp tools for controlling amplitude and envelope parameters on the Digitone.
 """
 
-from elektron_mcp.digitone.controller.amp_fx_controller import AmpController
-from elektron_mcp.digitone.config.digitone_config import digitone_config
+from elektron_mcp.digitone.services.amp_fx_controller import AmpController
+from elektron_mcp.digitone.config.config import digitone_config
 
 
 def register_amp_tools(mcp, midi):

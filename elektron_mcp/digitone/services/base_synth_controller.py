@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 class BaseSynthController:
-    """Base controller for Digitone parameters."""
+    """Base services for Digitone parameters."""
 
     def __init__(
         self,
@@ -15,7 +15,7 @@ class BaseSynthController:
         midi_channel: int,
     ):
         """
-        Initialize the controller.
+        Initialize the services.
 
         Args:
             config: A dictionary mapping parameter names/pages to ParameterGroup objects.

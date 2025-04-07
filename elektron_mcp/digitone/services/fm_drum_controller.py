@@ -1,4 +1,4 @@
-from elektron_mcp.digitone.controller.base_synth_controller import BaseSynthController
+from elektron_mcp.digitone.services.base_synth_controller import BaseSynthController
 
 
 class FMDrumController(BaseSynthController):

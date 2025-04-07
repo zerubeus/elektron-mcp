@@ -2,8 +2,8 @@
 Wavetone tools for controlling oscillator parameters on the Digitone.
 """
 
-from elektron_mcp.digitone.controller.wavetone_controller import WavetoneController
-from elektron_mcp.digitone.config.digitone_config import digitone_config
+from elektron_mcp.digitone.services.wavetone_controller import WavetoneController
+from elektron_mcp.digitone.config.config import digitone_config
 
 wavetone_pages = digitone_config.wavetone.pages
 

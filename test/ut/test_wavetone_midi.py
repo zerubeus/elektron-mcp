@@ -2,8 +2,8 @@ import pytest
 from unittest.mock import patch
 import logging
 
-from elektron_mcp.digitone.controller.wavetone_controller import WavetoneController
-from elektron_mcp.digitone.config.digitone_config import digitone_config
+from elektron_mcp.digitone.services.wavetone_controller import WavetoneController
+from elektron_mcp.digitone.config.config import digitone_config
 from elektron_mcp.midi.digitone_midi import DigitoneMIDI
 
 logger = logging.getLogger(__name__)
@@ -19,7 +19,7 @@ def test_set_osc1_pitch():
     if not digitone_midi.connected:
         pytest.skip("No Digitone device connected. Skipping test.")
 
-    # Configure a wavetone controller for MIDI channel 1
+    # Configure a wavetone services for MIDI channel 1
     midi_channel = 1
     wavetone_controller = WavetoneController(
         digitone_config.wavetone.pages, digitone_midi, midi_channel

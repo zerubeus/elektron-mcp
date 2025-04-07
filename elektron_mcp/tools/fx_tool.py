@@ -2,8 +2,8 @@
 FX tools for controlling effects parameters on the Digitone.
 """
 
-from elektron_mcp.digitone.controller.amp_fx_controller import FXController
-from elektron_mcp.digitone.config.digitone_config import digitone_config
+from elektron_mcp.digitone.services.amp_fx_controller import FXController
+from elektron_mcp.digitone.config.config import digitone_config
 
 
 def register_fx_tools(mcp, midi):
