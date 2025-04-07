@@ -1,4 +1,4 @@
-from elektron_mcp.digitone.constants.filters import (
+from elektron_mcp.digitone.data.filters import (
     MULTI_MODE_FILTER_PARAMS,
     LOWPASS_4_FILTER_PARAMS,
     LEGACY_LP_HP_FILTER_PARAMS,
@@ -8,13 +8,13 @@ from elektron_mcp.digitone.constants.filters import (
     BASE_WIDTH_FILTER_PARAMS,
 )
 
-from elektron_mcp.digitone.constants.fm_drum import FM_DRUM_PARAMS
-from elektron_mcp.digitone.constants.fm_tone import FM_TONE_PARAMS
-from elektron_mcp.digitone.constants.swarmer import SWARMER_PARAMS
-from elektron_mcp.digitone.constants.wavetone import WAVETONE_PARAMS
-from elektron_mcp.digitone.constants.lfo import LFO1_PARAMS, LFO2_PARAMS, LFO3_PARAMS
-from elektron_mcp.digitone.constants.amp import AMP_PARAMS_DATA
-from elektron_mcp.digitone.constants.fx import FX_PARAMS_DATA
+from elektron_mcp.digitone.data.fm_drum import FM_DRUM_PARAMS
+from elektron_mcp.digitone.data.fm_tone import FM_TONE_PARAMS
+from elektron_mcp.digitone.data.swarmer import SWARMER_PARAMS
+from elektron_mcp.digitone.data.wavetone import WAVETONE_PARAMS
+from elektron_mcp.digitone.data.lfo import LFO1_PARAMS, LFO2_PARAMS, LFO3_PARAMS
+from elektron_mcp.digitone.data.amp import AMP_PARAMS_DATA
+from elektron_mcp.digitone.data.fx import FX_PARAMS_DATA
 from elektron_mcp.digitone.models.models import DigitoneConfig
 from elektron_mcp.digitone.utils.parameter_utils import (
     create_lfo_params,
